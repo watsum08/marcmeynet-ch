@@ -1,4 +1,36 @@
 window.onload = Main();
+let upArrow;
+let downArrow;
+let leftArrow;
+let rightArrow;
+let enterKey;
+
+document.addEventListener("keydown", event => {
+  if (event.key === "ArrowUp") {
+    upArrow = true;
+  } else if (event.key === "ArrowDown") {
+    downArrow = true;
+  } else if (event.key === "ArrowLeft") {
+    leftArrow = true;
+  } else if (event.key === "ArrowRight") {
+    rightArrow = true;
+  } else if (event.key === "Enter") {
+    enterKey = true;
+  }
+}); 
+document.addEventListener("keyup", event => {
+  if (event.key === "ArrowUp") {
+    upArrow = false;
+  } else if (event.key === "ArrowDown") {
+    downArrow = false;
+  } else if (event.key === "ArrowLeft") {
+    leftArrow = false;
+  } else if (event.key === "ArrowRight") {
+    rightArrow = false;
+  } else if (event.key === "Enter") {
+    enterKey = false;
+  }
+});
 
 //Function pause, to use with 'async' and 'await'
 function sleep(ms) {
@@ -45,7 +77,7 @@ function Main() {
     });
     userCMD = document.getElementById("userCMD");
     
-    sleep(3000).then(() => {
+    sleep(2800).then(() => {
         connecting(userIP);
     });
 }
@@ -60,7 +92,7 @@ async function connecting() {
         {
             div1.innerHTML = div1.innerHTML.substring(0, div1.innerHTML.length - 5)
         }
-        await sleep(150);
+        await sleep(100);
     }
     let div2 = document.getElementById("connectionSuccess");
     div2.innerHTML = "Connection succesful.";
@@ -72,10 +104,10 @@ async function connecting() {
     div1.innerHTML = div2.innerHTML = userCMD.innerHTML = "&nbsp";
     div1.style.display = div2.style.display = "none";
 
-    await sleep(400);
+    await sleep(200);
     asyncTyper(userCMD, "./homepage.sh");
 
-    await sleep(1500);
+    await sleep(1300);
     userCMD.innerHTML = " ";
     welcome();
 
@@ -90,15 +122,97 @@ function welcome() {
     welcome.style.display = "block";
 }
 
+let textboxDiv = document.getElementById("textbox");
+
 function textbox() {
-    let textbox = document.getElementById("textbox");
-    textbox.innerHTML = "___________________________________________________________________________________<br><br>";
-    textbox.innerHTML += "What are you looking for?<br>";
-    textbox.innerHTML += "___________________________________________________________________________________";
+   textboxDiv.innerHTML = "What are you looking for?";
 }
 
 function menu() {
     let menu = document.getElementById("menu");
+    let lineBorders = document.getElementsByClassName("lineBorder");
+    let instructions = document.getElementById("instructions");
 
     menu.style.display = "flex";
+    for (let i = 0; i < lineBorders.length; i++) {
+      lineBorders[i].style.display = "block";
+    }
+    instructions.style.display = "flex";
+
+    loop();
+}
+
+let menuList = document.getElementsByClassName("menu-item");
+let menuIndex = 0;
+let keyPressed = false;
+
+function loop() {
+  requestAnimationFrame(loop);
+
+  if (rightArrow && !leftArrow && !upArrow && !downArrow && !keyPressed && menuIndex < menuList.length-1) {
+    keyPressed = true;
+    menuIndex++;
+  } else if (leftArrow && !rightArrow && !downArrow && !upArrow && !keyPressed && menuIndex > 0) {
+    keyPressed = true;
+    menuIndex--;
+  } else if (upArrow && !rightArrow && !downArrow && !leftArrow && !keyPressed && menuIndex > 3) {
+    keyPressed = true;
+    menuIndex -= 4;
+  } else if (downArrow && !rightArrow && !leftArrow && !upArrow && !keyPressed && menuIndex < menuList.length-4) {
+    keyPressed = true;
+    menuIndex += 4;
+  } else if (!upArrow && !downArrow && !leftArrow && !rightArrow && !enterKey) {
+    keyPressed = false;
+  }
+
+  for (let i = 0; i < menuList.length; i++) {
+    let theSpan = menuList[i].getElementsByClassName("arrow");
+    theSpan[0].id = "";
+    
+    let menuObj = menuList[menuIndex].getElementsByClassName("arrow");
+    menuObj[0].id = "active";
+
+    if (theSpan[0].id == "active") {
+      theSpan[0].style.display = "inline";
+      theSpan[0].style.color = "#FFCC00";
+    } else {
+      theSpan[0].style.display = "none";
+    }
+  }
+
+  if (enterKey && !keyPressed) {
+    keyPressed = true;
+
+    switch(menuIndex) {
+      case 0:
+        textboxDiv.innerHTML = "<wbr>";
+        sleep(300).then(() => {
+          asyncTyper(textboxDiv, "Hello");
+        });
+        break;
+      case 1:
+        window.open("cat.html", "_blank");
+        break;
+      case 2:
+        alert("Selection " + menuIndex + " not available yet");
+        break;
+      case 3:
+        alert("Selection " + menuIndex + " not available yet");
+        break;
+      case 4:
+        alert("Selection " + menuIndex + " not available yet");
+        break;
+      case 5:
+        alert("Selection " + menuIndex + " not available yet");
+        break;
+      case 6:
+        alert("Selection " + menuIndex + " not available yet");
+        break;
+      case 7:
+        alert("Selection " + menuIndex + " not available yet");
+        break;
+    }
+    enterKey = false;
+    keyPressed = false;
+  }
 }

@@ -87,6 +87,7 @@ body {
 .message {
     margin-bottom: 1rem;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 #userAgent, #userIP {
@@ -106,13 +107,14 @@ body {
 }
 
 #menu {
-  margin-top: 3rem;
+  margin-top: 6rem;
+  margin-bottom: 5rem;
   display: none;
   list-style: none;
-  align-content: space-around;
   flex-wrap: wrap;
   justify-content: center;
-  height: 9rem;
+  column-gap: 3rem;
+  row-gap: 5rem;
 }
 
 #menu li {
@@ -121,6 +123,33 @@ body {
 }
 
 #cat {
+  display: flex;
+  justify-content: center;
+}
+
+span .active {
+  display: none;
+}
+
+.lineBorder {
+  display: none;
+  overflow: hidden;
+}
+
+.instructions {
+  display: none;
+  justify-content: center;
+  column-gap: 4rem;
+  row-gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.controls {
+  color: #FFCC00;
+}
+
+.gameCanvas {
   display: flex;
   justify-content: center;
 }
