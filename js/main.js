@@ -182,7 +182,7 @@ function sayAJoke(n) {
       answer = "I don't care if you get them";
       break;
     case 6:
-      question = "How many programmers does it take to screw in a light bulb?";
+      question = "How many programmers does it take to change a light bulb?";
       answer = "None, it's a hardware problem";
       break;
   }
