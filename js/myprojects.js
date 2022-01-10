@@ -1,7 +1,7 @@
 let upArrow;
 let downArrow;
 let enterKey;
-let escKey;
+let backspaceKey;
 
 let frames = 0;
 
@@ -12,8 +12,8 @@ document.addEventListener("keydown", event => {
     downArrow = true;
   } else if (event.key === "Enter") {
     enterKey = true;
-  } else if (event.key === "Escape") {
-    escKey = true;
+  } else if (event.key === "Backspace") {
+    backspaceKey = true;
   }
 });
 document.addEventListener("keyup", event => {
@@ -23,8 +23,8 @@ document.addEventListener("keyup", event => {
     downArrow = false;
   } else if (event.key === "Enter") {
     enterKey = false;
-  } else if (event.key === "Escape") {
-    escKey = true;
+  } else if (event.key === "Backspace") {
+    backspaceKey = true;
   }
 });
 
@@ -205,7 +205,7 @@ function loop() {
     keyPressed = false;
   }
 
-  if (escKey && !keyPressed) {
-    window.close();
+  if (backspaceKey && !keyPressed) {
+    window.location.replace("main.html");
   }
 }
