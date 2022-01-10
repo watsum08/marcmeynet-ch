@@ -72,10 +72,8 @@ function Main() {
         browserName="unknown";
       }
 
-      document.getElementById("userAgent").innerHTML = userAgent = browserName + "@";
-    $.getJSON("https://www.myexternalip.com/json", function(e) {
-        document.getElementById("userIP").innerHTML = userIP = e.ip + " ~$";
-    });
+    document.getElementById("userAgent").innerHTML = browserName + "@";
+    document.getElementById("userIP").innerHTML = "84.16.76.229";
 
     textboxDiv = document.getElementById("textbox");
     
