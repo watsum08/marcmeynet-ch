@@ -60,7 +60,7 @@ function Main() {
     }
 
   document.getElementById("userAgent").innerHTML = browserName + "@";
-  document.getElementById("userIP").innerHTML = "84.16.76.229 ~$";
+  document.getElementById("userIP").innerHTML = "84.16.76.229";
   
   sleep(200).then(() => {
       introduction();
