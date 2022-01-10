@@ -153,3 +153,12 @@ span .active {
   display: flex;
   justify-content: center;
 }
+
+#projects {
+  display: none;
+}
+
+.description {
+  color: gray;
+  margin-left: 2rem;
+}

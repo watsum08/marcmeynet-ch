@@ -4,6 +4,7 @@ let downArrow;
 let leftArrow;
 let rightArrow;
 let enterKey;
+let escKey;
 
 document.addEventListener("keydown", event => {
   if (event.key === "ArrowUp") {
@@ -16,6 +17,8 @@ document.addEventListener("keydown", event => {
     rightArrow = true;
   } else if (event.key === "Enter") {
     enterKey = true;
+  } else if (event.key === "Escape") {
+    escKey = true;
   }
 }); 
 document.addEventListener("keyup", event => {
@@ -29,6 +32,8 @@ document.addEventListener("keyup", event => {
     rightArrow = false;
   } else if (event.key === "Enter") {
     enterKey = false;
+  } else if (event.key === "Escape") {
+    escKey = true;
   }
 });
 
@@ -43,7 +48,7 @@ async function asyncTyper(div, input) {
     for (let i = 0; i < input.length; i++)
     {
         div.innerHTML +=  input[i];
-        await sleep(60);
+        await sleep(40);
     }
 }
 
@@ -73,7 +78,7 @@ function Main() {
     });
     
     sleep(1000).then(() => {
-        asyncTyper(document.getElementById("userCMD"), "ssh " + userAgent + "67.0.142.13"); 
+        asyncTyper(document.getElementById("userCMD"), "ssh " + userAgent + "84.16.76.229"); 
     });
     userCMD = document.getElementById("userCMD");
     
@@ -96,7 +101,7 @@ async function connecting() {
     }
     let div2 = document.getElementById("connectionSuccess");
     div2.innerHTML = "Connection succesful.";
-    userIP.innerHTML = "67.0.142.13";
+    userIP.innerHTML = "84.16.76.229";
 
     let userCMD = document.getElementById("userCMD");
 
@@ -146,6 +151,51 @@ let menuList = document.getElementsByClassName("menu-item");
 let menuIndex = 0;
 let keyPressed = false;
 
+function sayAJoke(n) {
+  textboxDiv.innerHTML = "<wbr>";
+  let question;
+  let answer;
+
+  switch(n) {
+    case 0:
+      question = "How does a computer get drunk?";
+      answer = "It takes screenshots";
+      break;
+    case 1:
+      question = "Why did the PowerPoint cross the road?";
+      answer = "To get to the other slide";
+      break;
+    case 2:
+      question = "Why didn't the client tip the server?";
+      answer = "Because it didn't have enough cache";
+      break;
+    case 3:
+      question = "I would love to talk about computers";
+      answer = "But it makes my mother board";
+      break;
+    case 4:
+      question = "Why are people using the metric system so good at programming?";
+      answer = "Because they are pro-grammers";
+      break;
+    case 5:
+      question = "What's the best thing about UDP jokes?";
+      answer = "I don't care if you get them";
+      break;
+    case 6:
+      question = "How many programmers does it take to screw in a light bulb?";
+      answer = "None, it's a hardware problem";
+      break;
+  }
+
+  sleep(300).then(() => {
+    asyncTyper(textboxDiv, question);
+
+    sleep(question.length*40+2000).then(() => {
+      asyncTyper(textboxDiv, " " + answer);
+    });
+  });
+}
+
 function loop() {
   requestAnimationFrame(loop);
 
@@ -187,32 +237,37 @@ function loop() {
       case 0:
         textboxDiv.innerHTML = "<wbr>";
         sleep(300).then(() => {
-          asyncTyper(textboxDiv, "Hello");
+          asyncTyper(textboxDiv, "Hello !");
         });
         break;
       case 1:
-        window.open("cat.html", "_blank");
+        window.open("whoami.html", "_blank");
         break;
       case 2:
-        alert("Selection " + menuIndex + " not available yet");
+        window.open("myprojects.html", "_blank");
         break;
       case 3:
         alert("Selection " + menuIndex + " not available yet");
         break;
       case 4:
-        alert("Selection " + menuIndex + " not available yet");
+        window.open("cat.html", "_blank");
         break;
       case 5:
-        alert("Selection " + menuIndex + " not available yet");
+        window.open("matrix.html", "_blank");
         break;
       case 6:
-        alert("Selection " + menuIndex + " not available yet");
+        sayAJoke(Math.floor(Math.random() * 7));
         break;
       case 7:
-        alert("Selection " + menuIndex + " not available yet");
+        alert("PAS ENCORE, MAIS TRES BIENTOT!");
         break;
     }
     enterKey = false;
     keyPressed = false;
   }
+
+  if (escKey && !keyPressed) {
+    window.close();
+  }
+
 }
