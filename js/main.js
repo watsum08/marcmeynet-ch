@@ -73,7 +73,7 @@ function Main() {
       }
 
       document.getElementById("userAgent").innerHTML = userAgent = browserName + "@";
-    $.getJSON("https://api.ipify.org/?format=json", function(e) {
+    $.getJSON("https://www.myexternalip.com/json", function(e) {
         document.getElementById("userIP").innerHTML = userIP = e.ip + " ~$";
     });
     
@@ -170,7 +170,7 @@ function sayAJoke(n) {
       answer = "Because it didn't have enough cache";
       break;
     case 3:
-      question = "I would love to talk about computers";
+      question = "I would love to talk about computers..";
       answer = "But it makes my mother board";
       break;
     case 4:
