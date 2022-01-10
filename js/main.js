@@ -200,19 +200,19 @@ if (enterKey && !keyPressed) {
       });
       break;
     case 1:
-      window.location.href("whoami.html");
+      window.location.href = "whoami.html";
       break;
     case 2:
-      window.location.href("myprojects.html");
+      window.location.href = "myprojects.html";
       break;
     case 3:
       alert("Selection " + menuIndex + " not available yet");
       break;
     case 4:
-      window.location.href("cat.html");
+      window.location.href = "cat.html";
       break;
     case 5:
-      window.location.href("matrix.html");
+      window.location.href = "matrix.html";
       break;
     case 6:
       sayAJoke(Math.floor(Math.random() * 7));
