@@ -78,7 +78,7 @@ function Main() {
     });
     
     sleep(1000).then(() => {
-        asyncTyper(document.getElementById("userCMD"), "ssh " + userAgent + "84.16.76.229"); 
+        asyncTyper(document.getElementById("userCMD"), "ssh " + "84.16.76.229"); 
     });
     userCMD = document.getElementById("userCMD");
     
