@@ -115,5 +115,9 @@ async function connecting() {
     await sleep(1300);
     userCMD.innerHTML = " ";
 
-    window.location.replace("main.html");
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        asyncTyper(document.getElementById("errorMsg"), "Sorry.. this website is not yet available on mobile");
+     } else {
+        window.location.replace("main.html");
+     }
   }
