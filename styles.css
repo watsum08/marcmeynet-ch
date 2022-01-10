@@ -113,13 +113,13 @@ body {
   list-style: none;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 3rem;
-  row-gap: 5rem;
+  min-width: 500px;
 }
 
 #menu li {
-  flex: 1 0 21%;
+  flex: 1 0 25%;
   text-align: center;
+  margin-top: 2rem;
 }
 
 #cat {
@@ -139,10 +139,14 @@ span .active {
 .instructions {
   display: none;
   justify-content: center;
-  column-gap: 4rem;
-  row-gap: 2rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+  margin-left: -3rem;
+}
+
+.instruction {
+  margin-top: 1rem;
+  margin-left: 3rem;
 }
 
 .controls {
