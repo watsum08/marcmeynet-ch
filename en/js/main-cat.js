@@ -155,10 +155,8 @@ class Cat {
                     let randX;
                     do {
                         randX = getRandomInt(1, (canvas.width-24)/12)*12;
-                        console.log("randX: " + randX);
                     } while (randX - bird.x < 72 && bird.x - randX < 72)
                     bird.x = randX;
-                    console.log("bird.x: " + bird.x);
                     bird.y = getRandomInt(1,4)*12;
                 } else if (this.movingTimer > this.goDownTime + getRandomInt(8,13)) {
                     this.goingDown = false;

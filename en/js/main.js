@@ -1,3 +1,8 @@
+// Copyright
+console.log('%c"Great poets imitate and improve, whereas small ones steal and spoil." - %cW. H. Davenport Adams',  "font-size: 16px; font-family: 'Ubuntu Mono'; padding: 8px 12px; background-color: black; color: #DDD", "font-size: 16px; font-family: 'Ubuntu Mono'; padding: 8px 12px; background-color: black; color: #DDD; font-weight: bold");
+console.log("%cCopyright © 2021-" + new Date().getFullYear() + " Marc Meynet - All Codes Reserved", "font-size: 16px; font-family: 'Ubuntu Mono'; padding: 8px 12px; font-weight: bold; background-color: black; color: #1FC742");
+// Real code starts below
+
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth - 40*2;
@@ -124,12 +129,9 @@ function Main() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       isMobileDevice = true;
       document.addEventListener("touchend", event => {
-        console.log(event);
-        console.log(menuList[0]);
         for (let i = 0; i < menuList.length; i++) {
           if (isRectColliding(event.changedTouches[0].pageX, event.changedTouches[0].pageY, event.changedTouches[0].radiusX, event.changedTouches[0].radiusY,
                               menuList[i].offsetLeft, menuList[i].offsetTop, menuList[i].clientWidth, menuList[i].clientHeight)) {
-            console.log("clicked on " + menuList[i] + i);
             chooseNav(i);
           }
         }

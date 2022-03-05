@@ -227,15 +227,7 @@ span .active {
     list-style: none;
     flex-wrap: wrap;
     justify-content: center;
-    width: 70%;
-  }
-  
-  #menu li {
-    flex: 1 0 33%;
-    text-align: center;
-    margin-top: 3rem;
-    border: 2px dashed red;
-    padding: 12px;
+    width: 60%;
   }
 
   #menu li {
@@ -243,7 +235,7 @@ span .active {
     text-align: center;
     margin-top: 3rem;
     border: 2px dashed #DDD;
-    padding: 12px;
+    padding: 12px 0;
   }
 
   #menu li:hover, #menu li:active {

@@ -1,3 +1,8 @@
+// Copyright
+console.log('"Great poets imitate and improve, whereas small ones steal and spoil." - W. H. Davenport Adams');
+console.log("%cCopyright © 2021-" + new Date().getFullYear() + " Marc Meynet - All Codes Reserved", "background-color: gray; color: white");
+// Real code starts below
+
 window.onload = Main();
 let upArrow;
 let downArrow;
