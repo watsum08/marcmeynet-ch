@@ -197,25 +197,25 @@ function loop() {
 
     switch(menuIndex) {
       case 0:
-        window.open("MyProjects/BinaryRoll/binaryroll.html", "");
+        window.open("../MyProjects/BinaryRoll/binaryroll.html", "");
         break;
       case 1:
-        window.open("MyProjects/DropTheBallWebGL/index.html", "");
+        window.open("../MyProjects/DropTheBallWebGL/index.html", "");
         break;
       case 2:
-        window.open("MyProjects/BreakoutGame/index.html", "");
+        window.open("../MyProjects/BreakoutGame/index.html", "");
         break;
       case 3:
-        window.open("MyProjects/ASCIICat/cat.html", "");
+        window.open("../MyProjects/ASCIICat/cat.html", "");
         break;
       case 4:
-        window.open("MyProjects/ImACarrot/game.html", "", "left=320,top=180,width=1280,height=720");
+        window.open("../MyProjects/ImACarrot/game.html", "", "left=320,top=180,width=1280,height=720");
         break;
       case 5:
-        window.open("MyProjects/GravityGame/index.html", "");
+        window.open("../MyProjects/GravityGame/index.html", "");
         break;
       case 6:
-        window.open("MyProjects/MyPlatformer/index.html", "");
+        window.open("../MyProjects/MyPlatformer/index.html", "");
         break;
       case 7:
         window.open("https://the-burger-place.web.app/", "");

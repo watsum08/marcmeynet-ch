@@ -252,7 +252,7 @@ function loop() {
         case 3:
           window.open("https://github.com/watsum08/", "");
         case 4:
-          window.open("MarcAnthonyMeynet_CV.pdf", "");
+          window.open("../MarcAnthonyMeynet_CV.pdf", "");
           break;
       }
       enterKey = false;

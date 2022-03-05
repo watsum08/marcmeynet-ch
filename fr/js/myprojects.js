@@ -78,7 +78,7 @@ function introduction() {
   }
 
   sleep(500).then(() => {
-    asyncTyper(textLines[0], "Here's a list of my projects:");
+    asyncTyper(textLines[0], "Voici une liste de mes projets:");
 
     sleep(2200).then(() => {
       projectsDiv.style.display = "block";
@@ -98,39 +98,39 @@ function describeProject(index) {
   switch(index) {
     case 0:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " don't let the ball drop");
+      asyncTyper(descriptions[index], " ne laisse pas tomber la balle");
       break;
     case 1:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " my first Unity game");
+      asyncTyper(descriptions[index], " mon premier jeu Unity");
       break;
     case 2:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " a game originally developed by Atari back in 1976");
+      asyncTyper(descriptions[index], " copie du jeu crée par Atari en 1976");
       break;
     case 3:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " feel what it's like to be a carrot");
+      asyncTyper(descriptions[index], " un chat transformé en caractères ASCII");
       break;
     case 4:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " a cat transformed into ASCII characters");
+      asyncTyper(descriptions[index], " deviens une carrote");
       break;
     case 5:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " you are the master of gravity");
+      asyncTyper(descriptions[index], " tu es le maître de la gravité");
       break;
     case 6:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], ' my first platformer "game" on JavaScript');
+      asyncTyper(descriptions[index], ' mon premier "jeu" de plateforme en JavaScript');
       break;
     case 7:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " an HTML/CSS school project about burgers");
+      asyncTyper(descriptions[index], " un projet siteweb vitrine fictif HTML/CSS");
       break;
     case 8:
       descriptions[index].innerHTML = "";
-      asyncTyper(descriptions[index], " a static webpage for a local bed and breakfast");
+      asyncTyper(descriptions[index], " un siteweb vitrine pour un AirBnb");
       break;
   }
 }
@@ -197,25 +197,25 @@ function loop() {
 
     switch(menuIndex) {
       case 0:
-        window.open("MyProjects/BinaryRoll/binaryroll.html", "");
+        window.open("../MyProjects/BinaryRoll/binaryroll.html", "");
         break;
       case 1:
-        window.open("MyProjects/DropTheBallWebGL/index.html", "");
+        window.open("../MyProjects/DropTheBallWebGL/index.html", "");
         break;
       case 2:
-        window.open("MyProjects/BreakoutGame/index.html", "");
+        window.open("../MyProjects/BreakoutGame/index.html", "");
         break;
       case 3:
-        window.open("MyProjects/ASCIICat/cat.html", "");
+        window.open("../MyProjects/ASCIICat/cat.html", "");
         break;
       case 4:
-        window.open("MyProjects/ImACarrot/game.html", "", "left=320,top=180,width=1280,height=720");
+        window.open("../MyProjects/ImACarrot/game.html", "", "left=320,top=180,width=1280,height=720");
         break;
       case 5:
-        window.open("MyProjects/GravityGame/index.html", "");
+        window.open("../MyProjects/GravityGame/index.html", "");
         break;
       case 6:
-        window.open("MyProjects/MyPlatformer/index.html", "");
+        window.open("../MyProjects/MyPlatformer/index.html", "");
         break;
       case 7:
         window.open("https://the-burger-place.web.app/", "");

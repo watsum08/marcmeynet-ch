@@ -89,7 +89,7 @@ function Main() {
 
 async function connecting() {
     let div1 = document.getElementById("connecting");
-    div1.innerHTML = "Connecting to www.marcmeynet.ch";
+    div1.innerHTML = "Connecting to www.marcmeynet.ch ";
     for (let i = 1; i < 16; i++)
     {
         div1.innerHTML += ".";
@@ -105,19 +105,20 @@ async function connecting() {
 
     let userCMD = document.getElementById("userCMD");
 
+    let clientLanguage = window.navigator.userLanguage || window.navigator.language;
+
     await sleep(1500);
     div1.innerHTML = div2.innerHTML = userCMD.innerHTML = "&nbsp";
     div1.style.display = div2.style.display = "none";
 
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    /*if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       asyncTyper(document.getElementById("errorMsg"), "Available soon on mobile devices.");
-   } else {
-      window.location.replace("main.html");
-      
-      await sleep(200);
-      asyncTyper(userCMD, "./homepage.sh");
+   } else {*/
 
-      await sleep(1300);
-      userCMD.innerHTML = " ";
+    if (clientLanguage.startsWith("fr")) {
+      window.location.replace("fr/main.html");
+    } else {
+      window.location.replace("en/main.html");
+    }
    }
-  }
+  //}
