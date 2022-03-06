@@ -5,6 +5,8 @@ let backspaceKey;
 
 let frames = 0;
 
+let isMobileDevice;
+
 document.addEventListener("keydown", event => {
   if (event.key === "ArrowUp") {
     upArrow = true;
@@ -43,6 +45,49 @@ async function asyncTyper(div, input) {
     }
 }
 
+function isRectColliding(rect1X, rect1Y, rect1Width, rect1Height, rect2X, rect2Y, rect2Width, rect2Height) {
+  if (rect1X < rect2X + rect2Width &&
+    rect1X + rect1Width > rect2X &&
+    rect1Y < rect2Y + rect2Height &&
+    rect1Height + rect1Y > rect2Y) {
+    return true;
+  } else {
+      return false;
+  }
+}
+
+function chooseNav(index) {
+  switch(index) {
+    case 0:
+      window.open("../MyProjects/BinaryRoll/binaryroll.html", "");
+      break;
+    case 1:
+      window.open("../MyProjects/DropTheBallWebGL/index.html", "");
+      break;
+    case 2:
+      window.open("../MyProjects/BreakoutGame/index.html", "");
+      break;
+    case 3:
+      window.open("../MyProjects/ASCIICat/cat.html", "");
+      break;
+    case 4:
+      window.open("../MyProjects/ImACarrot/game.html", "", "left=320,top=180,width=1280,height=720");
+      break;
+    case 5:
+      window.open("../MyProjects/GravityGame/index.html", "");
+      break;
+    case 6:
+      window.open("../MyProjects/MyPlatformer/index.html", "");
+      break;
+    case 7:
+      window.open("https://the-burger-place.web.app/", "");
+      break;
+    case 8:
+      window.open("https://ameliasbnb.ch/", "");
+      break;
+  }
+}
+
 function Main() {
   let browserName;
   if(navigator.userAgent.match(/chrome|chromium|crios/i)){
@@ -62,6 +107,10 @@ function Main() {
   document.getElementById("userAgent").innerHTML = browserName + "@";
   document.getElementById("userIP").innerHTML = "84.16.76.229";
   
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    isMobileDevice = true;
+}
+
   sleep(200).then(() => {
       introduction();
   });
@@ -87,9 +136,23 @@ function introduction() {
         lineBorders[i].style.display = "block";
       }
 
-      instructions.style.display = "flex";
-      
-      loop();
+      if (!isMobileDevice) {
+        instructions.style.display = "flex";
+        loop();
+      } else {
+        document.addEventListener("touchend", event => {
+          for (let i = 0; i < menuList.length; i++) {
+            if (isRectColliding(event.changedTouches[0].pageX, event.changedTouches[0].pageY, event.changedTouches[0].radiusX, event.changedTouches[0].radiusY,
+                                menuList[i].offsetLeft, menuList[i].offsetTop, menuList[i].clientWidth, menuList[i].clientHeight)) {
+              if (i > 6) {
+                chooseNav(i);
+              } else {
+                alert("Ce projet n'est disponible qu'en version ordinateur.");
+              }
+            }
+          }
+        });
+      }
       });
   });
 }
@@ -171,60 +234,35 @@ function loop() {
     keyPressed = false;
   }
 
-  if (frames > 60 && !description) {
+  if (frames > 60 && !description && !isMobileDevice) {
     description = true;
     describeProject(menuIndex);
   }
 
-  for (let i = 0; i < menuList.length; i++) {
-    let theSpan = menuList[i].getElementsByClassName("arrow");
-    theSpan[0].id = "";
-    
-    let menuObj = menuList[menuIndex].getElementsByClassName("arrow");
-    menuObj[0].id = "active";
-
-    if (theSpan[0].id == "active") {
-      theSpan[0].style.display = "inline";
-      theSpan[0].style.color = "#FFCC00";
-    } else {
-      theSpan[0].style.display = "none";
-      descriptions[i].innerHTML = "";
+  if (!isMobileDevice) {
+    for (let i = 0; i < menuList.length; i++) {
+      let theSpan = menuList[i].getElementsByClassName("arrow");
+      theSpan[0].id = "";
+      
+      let menuObj = menuList[menuIndex].getElementsByClassName("arrow");
+      menuObj[0].id = "active";
+  
+      if (theSpan[0].id == "active") {
+        theSpan[0].style.display = "inline";
+        theSpan[0].style.color = "#FFCC00";
+      } else {
+        theSpan[0].style.display = "none";
+        descriptions[i].innerHTML = "";
+      }
     }
-  }
-
-  if (enterKey && !keyPressed) {
-    keyPressed = true;
-
-    switch(menuIndex) {
-      case 0:
-        window.open("../MyProjects/BinaryRoll/binaryroll.html", "");
-        break;
-      case 1:
-        window.open("../MyProjects/DropTheBallWebGL/index.html", "");
-        break;
-      case 2:
-        window.open("../MyProjects/BreakoutGame/index.html", "");
-        break;
-      case 3:
-        window.open("../MyProjects/ASCIICat/cat.html", "");
-        break;
-      case 4:
-        window.open("../MyProjects/ImACarrot/game.html", "", "left=320,top=180,width=1280,height=720");
-        break;
-      case 5:
-        window.open("../MyProjects/GravityGame/index.html", "");
-        break;
-      case 6:
-        window.open("../MyProjects/MyPlatformer/index.html", "");
-        break;
-      case 7:
-        window.open("https://the-burger-place.web.app/", "");
-        break;
-      case 8:
-        window.open("https://ameliasbnb.ch/", "");
-        break;
+  
+    if (enterKey && !keyPressed) {
+      keyPressed = true;
+  
+      chooseNav(menuIndex);
+  
+      enterKey = false;
+      keyPressed = false;
     }
-    enterKey = false;
-    keyPressed = false;
   }
 }

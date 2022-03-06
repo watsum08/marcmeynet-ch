@@ -71,7 +71,7 @@ function chooseNav(index) {
       window.location.href = "../fr/main.html";
       break;
     case 5:
-      window.open("mailto:info@marcmeynet.ch");
+      window.open("mailto:info@marcmeynet.ch?subject=Contact (www.marcmeynet.ch)");
       break;
     default:
       alert("Selection " + menuIndex + " not available yet");

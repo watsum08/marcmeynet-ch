@@ -117,7 +117,7 @@ function introduction() {
       asyncTyper(textLines[2], string);
 
           sleep(string.length*40+500).then(() => {
-            string = "Wanna know more about me?"
+            string = "Wanna know more about me?";
             asyncTyper(textLines[3], string);
 
               sleep(string.length*40+500).then(() => {
@@ -127,10 +127,10 @@ function introduction() {
                   lineBorders[i].style.display = "block";
                 }
 
+                typing = false;
                 if (!isMobileDevice) {
                   menuList[2].style.display = "none";
                   instructions.style.display = "flex";
-                  typing = false;
 
                   loop();
                 } else {
@@ -213,11 +213,9 @@ function chooseNav(index) {
             });
           });
         });
-      } else {
-        asyncTyper(textLines[3], " Thanks!");
       }
-
       break;
+
     case 1:
       if (noNext === 0 && !typing) {
         typing = true;
@@ -257,6 +255,7 @@ function chooseNav(index) {
       break;
     case 3:
       window.open("https://github.com/watsum08/", "");
+      break;
     case 4:
       window.open("../MarcAnthonyMeynet_CV.pdf", "");
       break;
