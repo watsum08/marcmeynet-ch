@@ -9,6 +9,8 @@ let lineBorders = document.getElementsByClassName("lineBorder");
 let linksDiv = document.getElementById("links");
 let languagesAscii = document.getElementsByClassName("language-ascii");
 
+let isMobileDevice;
+
 document.addEventListener("keydown", event => {
   if (event.key === "ArrowUp") {
     upArrow = true;
@@ -47,6 +49,17 @@ async function asyncTyper(div, input) {
     }
 }
 
+function isRectColliding(rect1X, rect1Y, rect1Width, rect1Height, rect2X, rect2Y, rect2Width, rect2Height) {
+  if (rect1X < rect2X + rect2Width &&
+    rect1X + rect1Width > rect2X &&
+    rect1Y < rect2Y + rect2Height &&
+    rect1Height + rect1Y > rect2Y) {
+    return true;
+  } else {
+      return false;
+  }
+}
+
 function Main() {
   let browserName;
   if(navigator.userAgent.match(/chrome|chromium|crios/i)){
@@ -65,6 +78,10 @@ function Main() {
 
   document.getElementById("userAgent").innerHTML = browserName + "@";
   document.getElementById("userIP").innerHTML = "84.16.76.229";
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    isMobileDevice = true;
+}
 
   sleep(200).then(() => {
     introduction();
@@ -110,12 +127,22 @@ function introduction() {
                   lineBorders[i].style.display = "block";
                 }
 
-                menuList[2].style.display = "none";
-                instructions.style.display = "flex";
+                if (!isMobileDevice) {
+                  menuList[2].style.display = "none";
+                  instructions.style.display = "flex";
+                  typing = false;
 
-                typing = false;
-
-                loop();
+                  loop();
+                } else {
+                  document.addEventListener("touchend", event => {
+                    for (let i = 0; i < menuList.length; i++) {
+                      if (isRectColliding(event.changedTouches[0].pageX, event.changedTouches[0].pageY, event.changedTouches[0].radiusX, event.changedTouches[0].radiusY,
+                                          menuList[i].offsetLeft, menuList[i].offsetTop, menuList[i].clientWidth, menuList[i].clientHeight)) {
+                        chooseNav(i);
+                      }
+                    }
+                  });
+                }
               });
             });
           });
@@ -128,6 +155,113 @@ let menuReducer = 0;
 let keyPressed = false;
 let yesNext = false;
 let noNext = 0;
+
+function chooseNav(index) {
+  switch(index) {
+    case 0:
+      if (!yesNext) {
+        typing = true;
+
+        instructions.style.display = "none";
+        for (let i = 0; i < lineBorders.length; i++) {
+          lineBorders[i].style.display = "none";
+        }
+        linksDiv.style.display = "none";
+        for (let i = 0; i < textLines.length; i++) {
+          textLines[i].innerHTML = "";
+        }
+        let string = "My preferred programming languages are: ";
+        textLines[0].style.display = "block";
+        asyncTyper(textLines[0], string);
+        sleep(string.length*40+500).then(() => {
+
+          languagesAscii[0].style.display = "block";
+
+          sleep(500).then(() => {
+
+            languagesAscii[1].style.display = "block";
+
+            sleep(500).then(() => {
+
+              languagesAscii[2].style.display = "block";
+  
+              sleep(500).then(() => {
+
+                let string = "Check out the links below to see what I can do! ";
+                textLines[3].style.display = "block";
+                asyncTyper(textLines[3], string);
+    
+                sleep(string.length*40+500).then(() => {
+                  for (let i = 0; i < lineBorders.length; i++) {
+                    lineBorders[i].style.display = "block";
+                  }
+                  linksDiv.style.display = "block";
+                  menuList[0].style.display = menuList[1].style.display = "none";
+                  menuList[2].style.display = "block";
+
+                  if (!isMobileDevice) {
+                    menuIndex = 2;
+                    menuReducer = 2;
+                    instructions.style.display = "flex";
+        
+                    typing = false;
+
+                    yesNext = true;
+                  }
+                });
+              });
+            });
+          });
+        });
+      } else {
+        asyncTyper(textLines[3], " Thanks!");
+      }
+
+      break;
+    case 1:
+      if (noNext === 0 && !typing) {
+        typing = true;
+        textLines[4].style.display = "block";
+        let string = "Please!";
+        asyncTyper(textLines[4], string);
+
+        sleep(string.length*40+500).then(() => {
+          typing = false;
+          noNext++;
+        });
+      } else if (noNext === 1 && !typing) {
+        typing = true;
+        textLines[5].style.display = "block";
+        let string = "Okay..";
+        asyncTyper(textLines[5], string);
+
+        sleep(string.length*40+500).then(() => {
+          typing = false;
+          noNext++;
+        });
+      } else if (noNext === 2 && !typing) {
+        typing = true;
+        textLines[6].style.display = "block";
+        let string = "Alright then goodbye!";
+        asyncTyper(textLines[6], string);
+
+        sleep(string.length*40+500).then(() => {
+          typing = false;
+          noNext++;
+          window.location.replace("main.html");
+        });
+      }
+      break;
+    case 2:
+      window.location.replace("myprojects.html");
+      break;
+    case 3:
+      window.open("https://github.com/watsum08/", "");
+    case 4:
+      window.open("../MarcAnthonyMeynet_CV.pdf", "");
+      break;
+  }
+}
 
 function loop() {
   requestAnimationFrame(loop);
@@ -153,124 +287,27 @@ function loop() {
       keyPressed = false;
     } else if (enterKey && !keyPressed) {
       keyPressed = true;
-  
-      switch(menuIndex) {
-        case 0:
-          if (!yesNext) {
-            typing = true;
-  
-            instructions.style.display = "none";
-            for (let i = 0; i < lineBorders.length; i++) {
-              lineBorders[i].style.display = "none";
-            }
-            linksDiv.style.display = "none";
-            for (let i = 0; i < textLines.length; i++) {
-              textLines[i].innerHTML = "";
-            }
-            let string = "My preferred programming languages are: ";
-            textLines[0].style.display = "block";
-            asyncTyper(textLines[0], string);
-            sleep(string.length*40+500).then(() => {
-
-              languagesAscii[0].style.display = "block";
-
-              sleep(500).then(() => {
-
-                languagesAscii[1].style.display = "block";
-    
-                sleep(500).then(() => {
-
-                  languagesAscii[2].style.display = "block";
       
-                  sleep(500).then(() => {
-
-                    let string = "Check out the links below to see what I can do! ";
-                    textLines[3].style.display = "block";
-                    asyncTyper(textLines[3], string);
-        
-                    sleep(string.length*40+500).then(() => {
-                      for (let i = 0; i < lineBorders.length; i++) {
-                        lineBorders[i].style.display = "block";
-                      }
-                      linksDiv.style.display = "block";
-                      menuList[0].style.display = menuList[1].style.display = "none";
-                      menuList[2].style.display = "block";
-                      menuIndex = 2;
-                      menuReducer = 2;
-                      instructions.style.display = "flex";
-          
-                      typing = false;
-
-                      yesNext = true;
-                    });
-                  });
-                });
-              });
-            });
-          } else {
-            asyncTyper(textLines[3], " Thanks!");
-          }
-  
-          break;
-        case 1:
-          if (noNext === 0 && !typing) {
-            typing = true;
-            textLines[4].style.display = "block";
-            let string = "Please!";
-            asyncTyper(textLines[4], string);
-
-            sleep(string.length*40+500).then(() => {
-              typing = false;
-              noNext++;
-            });
-          } else if (noNext === 1 && !typing) {
-            typing = true;
-            textLines[5].style.display = "block";
-            let string = "Okay..";
-            asyncTyper(textLines[5], string);
-
-            sleep(string.length*40+500).then(() => {
-              typing = false;
-              noNext++;
-            });
-          } else if (noNext === 2 && !typing) {
-            typing = true;
-            textLines[6].style.display = "block";
-            let string = "Alright then goodbye!";
-            asyncTyper(textLines[6], string);
-
-            sleep(string.length*40+500).then(() => {
-              typing = false;
-              noNext++;
-              window.location.replace("main.html");
-            });
-          }
-          break;
-        case 2:
-          window.location.replace("myprojects.html");
-          break;
-        case 3:
-          window.open("https://github.com/watsum08/", "");
-        case 4:
-          window.open("MarcAnthonyMeynet_CV.pdf", "");
-          break;
-      }
+      chooseNav(menuIndex);
+      
       enterKey = false;
       keyPressed = false;
   }
 
-  for (let i = 0; i < menuList.length; i++) {
-    let theSpan = menuList[i].getElementsByClassName("arrow");
-    theSpan[0].id = "";
-    
-    let menuObj = menuList[menuIndex].getElementsByClassName("arrow");
-    menuObj[0].id = "active";
-
-    if (theSpan[0].id == "active") {
-      theSpan[0].style.display = "inline";
-      theSpan[0].style.color = "#FFCC00";
-    } else {
-      theSpan[0].style.display = "none";
+  if (!isMobileDevice) {
+    for (let i = 0; i < menuList.length; i++) {
+      let theSpan = menuList[i].getElementsByClassName("arrow");
+      theSpan[0].id = "";
+      
+      let menuObj = menuList[menuIndex].getElementsByClassName("arrow");
+      menuObj[0].id = "active";
+  
+      if (theSpan[0].id == "active") {
+        theSpan[0].style.display = "inline";
+        theSpan[0].style.color = "#FFCC00";
+      } else {
+        theSpan[0].style.display = "none";
+      }
     }
   }
   }
