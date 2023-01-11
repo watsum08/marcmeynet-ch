@@ -1,8 +1,14 @@
 import Head from "next/head";
 import LandingSection from "../layout/LandingSection";
 import Header from "../components/Header";
+import AboutMeSection from "../layout/AboutMeSection";
+import SkillsSection from "../layout/SkillsSection";
+import PortfolioSection from "../layout/PortfolioSection";
+import ContactSection from "../layout/ContactSection";
 
 export default function Home() {
+  /*const [bodyColor, setBodyColor] = useState("hsl(0 , 0, 0%)");*/
+
   return (
     <>
       <Head>
@@ -15,6 +21,14 @@ export default function Home() {
         <Header />
 
         <LandingSection />
+
+        <AboutMeSection />
+
+        <SkillsSection />
+
+        <PortfolioSection />
+
+        <ContactSection />
       </main>
     </>
   );

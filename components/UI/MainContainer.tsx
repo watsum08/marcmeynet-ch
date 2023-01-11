@@ -1,8 +1,14 @@
 import { Box, Container } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const MainContainer = ({ children }: { children: JSX.Element }) => {
-  const [windowHeight, setWindowHeight] = useState(0);
+const MainContainer = ({
+  children,
+}: /*setBodyColor,*/
+{
+  children: JSX.Element | JSX.Element[];
+  /*setBodyColor: (bg: string) => void;*/
+}) => {
+  /*const [windowHeight, setWindowHeight] = useState(0);
   const [addedScrollEvent, setAddedScrollEvent] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(100);
 
@@ -15,7 +21,6 @@ const MainContainer = ({ children }: { children: JSX.Element }) => {
       "resize",
       () => {
         setWindowHeight(innerHeight);
-        console.log("new innerHeight: " + innerHeight);
       },
       false
     );
@@ -40,12 +45,18 @@ const MainContainer = ({ children }: { children: JSX.Element }) => {
     }
   }, [addedScrollEvent, windowHeight]);
 
+  useEffect(() => {
+    const bodyColor = `hsl(0,0, ${scrollPercentage}%)`;
+    
+    setBodyColor(bodyColor);
+  },[scrollPercentage, setBodyColor]); */
+
   return (
     <Box
-      bg={`rgba(0, 0, 0, ${scrollPercentage})`}
-      transition="0.5s background-color"
+      /*bg={`rgba(0, 0, 0, ${scrollPercentage})`}*/
+      cursor="default"
     >
-      <Container maxW="1600px">{children}</Container>
+      <Container maxW="1440px">{children}</Container>
     </Box>
   );
 };

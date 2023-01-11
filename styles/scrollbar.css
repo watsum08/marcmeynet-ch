@@ -5,6 +5,7 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #000;
+  outline: 2px solid #000;
 }
 
 /* Handle */
@@ -21,5 +22,5 @@
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: #888;
-  }
+  background: #888;
+}
