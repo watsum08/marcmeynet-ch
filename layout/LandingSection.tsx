@@ -4,7 +4,7 @@ import Section from "../components/UI/Section";
 const LandingSection = () => {
   return (
     <Section>
-      <Box mt="20%">
+      <Box mt="15%">
         <Heading as="h1" fontWeight={600} fontSize="64px">
           Marc Meynet
         </Heading>

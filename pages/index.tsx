@@ -12,9 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-          <Header />
+        <Header />
 
-          <LandingSection />
+        <LandingSection />
       </main>
     </>
   );
