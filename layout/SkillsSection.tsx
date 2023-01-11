@@ -5,7 +5,7 @@ import SectionHeading from "../components/UI/SectionHeading";
 
 const SkillsSection = () => {
   return (
-    <Section bg="rgba(255, 255, 255, 0.5)" id="skills">
+    <Section bg="rgba(255, 255, 255, 0.45)" id="skills">
       <SectionHeading text="Skills" />
       <Box px={12} mt={16}>
         <Text fontSize="20px">From design to wheelies, I have a few skills !</Text>

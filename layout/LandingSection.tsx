@@ -8,7 +8,7 @@ const LandingSection = () => {
     <Section bg="black">
       <Flex align="center" mt="64px">
         <Box w="full" zIndex={999} pos="relative">
-          <Heading as="h1" fontWeight={600} fontSize="64px">
+          <Heading as="h1" fontSize="64px" fontWeight={500}>
             Marc Meynet
           </Heading>
           <Flex align="center" gap={4} mt={2}>

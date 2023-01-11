@@ -5,14 +5,24 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Textarea,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
 const ContactSection = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Section bg="rgba(255, 255, 255, 1)" id="contact" color="black">
+    <Section bg="rgba(255, 255, 255, 0.95)" id="contact" color="black">
       <SectionHeading text="Contact" lastSection />
 
       <Flex justify="space-between" align="flex-start" mt={16}>
@@ -70,13 +80,52 @@ const ContactSection = () => {
               h="auto"
               color="white"
               bg="#050505"
-              rounded="4px"
+              rounded="2px"
+              transition="0.3s all"
+              _hover={{ bg: "#fff", color: "#000", outline: "2px solid #000" }}
+              _active={{ bg: "#aaa" }}
+              onClick={(e) => {
+                e.preventDefault();
+                onOpen();
+              }}
             >
               Send
             </Button>
           </FormControl>
         </form>
       </Flex>
+
+      <Modal onClose={onClose} isOpen={isOpen} blockScrollOnMount={false}>
+        <ModalOverlay bg="rgba(0, 0, 0, 0.8)"/>
+        <ModalContent color="black" rounded="4px" border="2px solid black">
+          <ModalCloseButton />
+          <ModalBody textAlign="center" fontSize="20px" py="96px" px="32px">
+            Your message has been successfully sent.
+          </ModalBody>
+
+          <ModalFooter justifyContent="flex-start">
+              <Button
+                textTransform="uppercase"
+                px={5}
+                py={3}
+                h="auto"
+                color="white"
+                bg="#050505"
+                rounded="2px"
+                transition="0.3s all"
+                _hover={{
+                  bg: "#fff",
+                  color: "#000",
+                  outline: "2px solid #000",
+                }}
+                _active={{ bg: "#aaa" }}
+                onClick={onClose}
+              >
+                Close
+              </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Section>
   );
 };

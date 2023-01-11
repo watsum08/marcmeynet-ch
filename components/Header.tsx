@@ -22,6 +22,7 @@ const Header = () => {
       left={0}
       ml={4}
       color="white"
+      fontSize="18px"
     >
       <Button
         transform={`rotate(${isOpen ? 90 : 0}deg)`}

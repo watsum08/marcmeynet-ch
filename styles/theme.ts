@@ -26,6 +26,10 @@ const theme = extendTheme({
       },
     },
   },
+  fonts: {
+    heading: `'Supreme', sans-serif`,
+    body: `'Supreme', sans-serif`,
+  },
 });
 
 export default theme;

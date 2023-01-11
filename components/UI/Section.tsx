@@ -15,10 +15,10 @@ const Section = ({
   return (
     <Box
       color={color ?? "white"}
-      px={32}
+      px={16}
       py="160px"
       m="auto"
-      minH="1100px"
+      minH="1000px"
       bg={bg ?? "black"}
       id={id ?? "auto"}
     >

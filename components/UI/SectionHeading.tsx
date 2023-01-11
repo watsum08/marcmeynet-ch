@@ -10,7 +10,7 @@ const SectionHeading = ({
   return (
     <Heading
       as="h3"
-      fontWeight={600}
+      fontWeight={300}
       fontSize="42px"
       _selection={
         lastSection
