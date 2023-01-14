@@ -28,8 +28,8 @@ const LandingSection = () => {
           </Flex>
         </Box>
 
-        <Box w="full" h="450px" zIndex={0} pos="relative">
-          <Spline scene="https://prod.spline.design/rG4M8Lh9tjdZQe50/scene.splinecode" />
+        <Box w="full" h="500px" zIndex={0} pos="relative">
+          <Spline scene="https://prod.spline.design/R-TJBT8WMML90tas/scene.splinecode" />
         </Box>
       </Flex>
     </Section>

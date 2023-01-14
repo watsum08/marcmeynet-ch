@@ -30,7 +30,8 @@ const Header = () => {
         _hover={{}}
         _active={{ transform: "scale(1.2)" }}
         bg="transparent"
-        p={0}
+        p={4}
+        py={6}
         m={0}
         onClick={() => setIsOpen(!isOpen)}
       >
