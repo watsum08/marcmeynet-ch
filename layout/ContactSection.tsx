@@ -24,7 +24,7 @@ import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const form = useRef<HTMLFormElement>({});
+  const form = useRef<HTMLFormElement>(new HTMLFormElement());
 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
