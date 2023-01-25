@@ -24,7 +24,7 @@ import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const form = useRef<HTMLFormElement>(new HTMLFormElement());
+  const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
@@ -32,25 +32,27 @@ const ContactSection = () => {
     setIsLoading(true);
     onOpen();
 
-    emailjs
-      .sendForm(
-        "service_vf7y90n",
-        "template_k1j47p9",
-        form.current,
-        "EGN3La3ew3OJFWzIQ"
-      )
-      .then(
-        (result) => {
-          console.log(result);
-          setIsLoading(false);
-          setHasNoError(true);
-        },
-        (error) => {
-          console.log(error);
-          setIsLoading(false);
-          setHasNoError(false);
-        }
-      );
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_vf7y90n",
+          "template_k1j47p9",
+          form.current,
+          "EGN3La3ew3OJFWzIQ"
+        )
+        .then(
+          (result) => {
+            console.log(result);
+            setIsLoading(false);
+            setHasNoError(true);
+          },
+          (error) => {
+            console.log(error);
+            setIsLoading(false);
+            setHasNoError(false);
+          }
+        );
+    }
   };
 
   const [isLoading, setIsLoading] = useState(false);
