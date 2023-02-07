@@ -1,16 +1,19 @@
 import { Box, Flex, Image, Text, Link as ChakraLink } from "@chakra-ui/react";
 import Link from "next/link";
+import { useInView } from "react-hook-inview";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
 const SkillsSection = () => {
+  const [ref, inView] = useInView({ threshold: 0.5 });
+
   return (
     <Section bg="rgba(255, 255, 255, 0.45)" id="skills">
       <SectionHeading text="Skills" />
-      <Box px={12} mt={16}>
-        <Text fontSize="20px">From design to wheelies, I have a few skills !</Text>
-        <Flex gap={32} mt={8}>
-          <SkillBox heading="Design">
+      <Box mt={16}>
+        <Text fontSize="20px">Here are some skills I have learned</Text>
+        <Flex gap={32} mt={8} ref={ref}>
+          <SkillBox heading="Design" inView={inView}>
             <SkillItem
               iconSrc="icons/skills/gimp.png"
               text="GIMP"
@@ -26,9 +29,14 @@ const SkillsSection = () => {
               text="MagicaVoxel"
               href="https://ephtracy.github.io/"
             />
+            <SkillItem
+              iconSrc="icons/skills/spline.png"
+              text="Spline"
+              href="https://spline.design/"
+            />
           </SkillBox>
 
-          <SkillBox heading="Languages">
+          <SkillBox heading="Languages" inView={inView}>
             <SkillItem
               iconSrc="icons/skills/html5.png"
               text="HTML"
@@ -61,7 +69,7 @@ const SkillsSection = () => {
             />
           </SkillBox>
 
-          <SkillBox heading="Frameworks">
+          <SkillBox heading="Frameworks" inView={inView}>
             <SkillItem
               iconSrc="icons/skills/react.png"
               text="React"
@@ -126,12 +134,20 @@ const SkillItem = ({
 const SkillBox = ({
   heading,
   children,
+  inView,
 }: {
   heading: string;
   children: JSX.Element | JSX.Element[];
+  inView: boolean;
 }) => {
   return (
-    <Flex flexDir="column" gap={2}>
+    <Flex
+      flexDir="column"
+      gap={2}
+      transition="0.3s ease-out"
+      transformOrigin="0% 100%"
+      transform={`scaleX(${inView ? 1 : 0})`}
+    >
       <Box textTransform="uppercase" fontSize="16px">
         {heading}
       </Box>

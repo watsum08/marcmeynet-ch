@@ -21,6 +21,7 @@ import SectionHeading from "../components/UI/SectionHeading";
 import { FormEvent, useRef, useState } from "react";
 
 import emailjs from "@emailjs/browser";
+import { useInView } from "react-hook-inview";
 
 const ContactSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -58,20 +59,31 @@ const ContactSection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasNoError, setHasNoError] = useState<boolean | undefined>(undefined);
 
+  const [ref, inView] = useInView();
+
   return (
     <Section bg="rgba(255, 255, 255, 0.95)" id="contact" color="black">
       <SectionHeading text="Contact" lastSection />
 
       <Flex justify="space-between" align="flex-start" mt={16}>
         <Box
-          px={12}
           fontSize="20px"
           _selection={{ bg: "black", color: "white" }}
+          ref={ref}
         >
-          Interested in hiring me or just wanna say hello ?
+          <Text
+            transition="0.3s all"
+            transform={`translateX(${inView ? 0 : -2000}px)`}
+          >
+            Wanna hire me or just wanna say hello ?
+          </Text>
           <br />
-          <br />
-          Send me a message and I&apos;ll make sure we get in touch !
+          <Text
+            transition="0.3s all 0.6s"
+            transform={`translateX(${inView ? 0 : -2000}px)`}
+          >
+            Send me a message and I&apos;ll make sure we get in touch !
+          </Text>
         </Box>
 
         <form ref={form} onSubmit={sendEmail}>

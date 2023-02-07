@@ -9,7 +9,7 @@ const AboutMeSection = () => {
       <Flex align="flex-start" justify="space-between">
         <Box pt={4}>
           <SectionHeading text="Who am I ?" />
-          <Box mt={16} ml={24}>
+          <Box mt={16}>
             <Box as="p" color="#fff" w="70%" lineHeight="180%" textAlign="justify">
               Hi, my name is Marc Meynet and I&apos;m a full stack web
               developer. <br />
@@ -19,7 +19,7 @@ const AboutMeSection = () => {
               <br />
               <br />
               IT being a fast evolving industry, I always look forward to stay
-              up to date with modern technologies. I also enjoy working on
+              updated with modern technologies. I also enjoy working on
               different projects such as developing games or programming
               Raspberry Pi.
             </Box>

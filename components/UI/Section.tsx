@@ -21,6 +21,7 @@ const Section = ({
       minH="1000px"
       bg={bg ?? "black"}
       id={id ?? "auto"}
+      borderTop="2px dashed black"
     >
       <MainContainer>{children}</MainContainer>
     </Box>

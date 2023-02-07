@@ -26,14 +26,14 @@ const Header = () => {
     >
       <Button
         transform={`rotate(${isOpen ? 90 : 0}deg)`}
-        transition="0.5s all ease-out"
-        _hover={{}}
-        _active={{ transform: "scale(1.2)" }}
+        transition="0.2s all ease-out"
+        _active={{}}
         bg="transparent"
         p={4}
         py={6}
         m={0}
         onClick={() => setIsOpen(!isOpen)}
+        _hover={{ transform: `rotate(${isOpen ? 90 : 0}deg) scale(1.2)` }}
       >
         <Image
           src="icons/nav/nav_burger.svg"
