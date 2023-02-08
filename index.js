@@ -105,7 +105,7 @@ async function connecting() {
         await sleep(100);
     }
     let div2 = document.getElementById("connectionSuccess");
-    div2.innerHTML = "Connection succesful.";
+    div2.innerHTML = "Connection succesful!";
     userIP.innerHTML = "84.16.16.229";
 
     let userCMD = document.getElementById("userCMD");
