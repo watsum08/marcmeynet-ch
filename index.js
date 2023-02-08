@@ -83,7 +83,7 @@ function Main() {
     });
     
     sleep(1000).then(() => {
-        asyncTyper(document.getElementById("userCMD"), "ssh " + "84.16.76.229"); 
+        asyncTyper(document.getElementById("userCMD"), "ssh " + "84.16.16.229"); 
     });
     userCMD = document.getElementById("userCMD");
     
@@ -106,7 +106,7 @@ async function connecting() {
     }
     let div2 = document.getElementById("connectionSuccess");
     div2.innerHTML = "Connection succesful.";
-    userIP.innerHTML = "84.16.76.229";
+    userIP.innerHTML = "84.16.16.229";
 
     let userCMD = document.getElementById("userCMD");
 
