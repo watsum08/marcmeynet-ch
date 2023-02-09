@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
@@ -14,108 +14,149 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { useInView } from "react-hook-inview";
 
-const PortfolioSection = () => {
+const PortfolioSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+  const [ref, inView] = useInView();
+
   return (
-    <Section bg="rgba(255, 255, 255, 0.7)" id="portfolio" color="black">
-      <SectionHeading text="Portfolio" />
+    <Section
+      bg={
+        colorMode === "dark"
+          ? "rgba(255, 255, 255, 0.7)"
+          : "rgba(255, 255, 255, 0.3)"
+      }
+      id="portfolio"
+    >
+      <Box
+        color={colorMode === "dark" ? "black" : "white"}
+        transition="0.8s all ease-out"
+        opacity={inView ? 1 : 0}
+        ref={ref}
+      >
+        <SectionHeading text="Portfolio" />
 
-      <Text fontSize="20px" mt={16}>
-        Drag or use mouse wheel to check all of my projects
-      </Text>
+        <Text fontSize="20px" mt={12}>
+          Drag or use mouse wheel to check all of my projects
+        </Text>
 
-      <Flex w="calc(100vw - 10px)" pos="absolute" left={0} mt={8}>
-        <Swiper
-          modules={[Scrollbar, A11y, Autoplay, Mousewheel]}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          mousewheel
-          spaceBetween={256}
-          slidesPerView={2}
-          centeredSlides
-          loop
-          loopedSlides={2}
-        >
-          <SwiperSlide>
-            <PortfolioItem
-              name="Amelia's Bed and Breakfast"
-              tags={["Figma", "NextJS", "JavaScript"]}
-              description={[
-                "A bed and breakfast website.",
-                "Custom design made with Figma.",
-                "Created with Next.js in JavaScript.",
-              ]}
-              codeHref="https://github.com/watsum08/ameliasbnb-ch"
-              demoHref="https://www.ameliasbnb.ch"
-              imgHref="img/portfolio/ameliasbnb.jpeg"
-            />
-          </SwiperSlide>
+        <Flex w="calc(100vw - 10px)" pos="absolute" left={0} mt={16}>
+          <Swiper
+            modules={[Scrollbar, A11y, Autoplay, Mousewheel]}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            mousewheel
+            spaceBetween={256}
+            slidesPerView={2}
+            centeredSlides
+            loop
+            loopedSlides={2}
+          >
+            <SwiperSlide>
+              <PortfolioItem
+                name="My portfolio website"
+                tags={["Figma", "NextJS", "TypeScript", "Spline"]}
+                description={[
+                  "What you're seeing right now",
+                  "Custom design",
+                  "Created with Next.js in TypeScript",
+                ]}
+                codeHref="https://github.com/watsum08/ameliasbnb-ch"
+                demoHref="https://www.ameliasbnb.ch"
+                imgHref="img/portfolio/ameliasbnb.jpeg"
+                color={colorMode === "dark" ? "black" : "white"}
+              />
+            </SwiperSlide>
 
-          <SwiperSlide>
-            <PortfolioItem
-              name="Démolplus Sàrl"
-              tags={["Figma", "NextJS", "JavaScript"]}
-              description={[
-                "A demolition company website",
-                "Custom design made with Figma.",
-                "Google SEO optimization",
-              ]}
-              codeHref="https://github.com/watsum08/demolplus-ch"
-              demoHref="https://www.demolplus.ch"
-              imgHref="img/portfolio/demolplus.jpeg"
-              httpAlert
-            />
-          </SwiperSlide>
+            <SwiperSlide>
+              <PortfolioItem
+                name="My portfolio website v.1"
+                tags={["HTML", "CSS", "JavaScript"]}
+                description={[
+                  "My first portfolio website",
+                  "Custom design",
+                  "I had a lot of fun using JavaScript",
+                ]}
+                codeHref="https://github.com/watsum08/marcmeynet-ch"
+                demoHref="https://www.marcmeynet.ch"
+                imgHref="img/portfolio/marcmeynet_v1.jpeg"
+                color={colorMode === "dark" ? "black" : "white"}
+              />
+            </SwiperSlide>
 
-          <SwiperSlide>
-            <PortfolioItem
-              name="Amelia's Bed and Breakfast 2"
-              tags={["Figma", "NextJS", "JavaScript"]}
-              description={[
-                "A bed and breakfast website.",
-                "Custom design made with Figma.",
-                "Created with Next.js in JavaScript.",
-              ]}
-              codeHref="https://github.com/watsum08/ameliasbnb-ch"
-              demoHref="https://www.ameliasbnb.ch"
-              imgHref="img/portfolio/ameliasbnb.jpeg"
-            />
-          </SwiperSlide>
+            <SwiperSlide>
+              <PortfolioItem
+                name="Démolplus Sàrl"
+                tags={["Figma", "NextJS", "JavaScript"]}
+                description={[
+                  "A demolition company website",
+                  "Custom design",
+                  "Google SEO optimization",
+                ]}
+                codeHref="https://github.com/watsum08/demolplus-ch"
+                demoHref="https://demolplus.ch"
+                imgHref="img/portfolio/demolplus.jpeg"
+                httpAlert
+                color={colorMode === "dark" ? "black" : "white"}
+              />
+            </SwiperSlide>
 
-          <SwiperSlide>
-            <PortfolioItem
-              name="Amelia's Bed and Breakfast 3"
-              tags={["Figma", "NextJS", "JavaScript"]}
-              description={[
-                "A bed and breakfast website.",
-                "Custom design made with Figma.",
-                "Created with Next.js in JavaScript.",
-              ]}
-              codeHref="https://github.com/watsum08/ameliasbnb-ch"
-              demoHref="https://www.ameliasbnb.ch"
-              imgHref="img/portfolio/ameliasbnb.jpeg"
-            />
-          </SwiperSlide>
+            <SwiperSlide>
+              <PortfolioItem
+                name="The Burger Place"
+                tags={["HTML", "CSS", "JavaScript"]}
+                description={[
+                  "A fictional burger place.",
+                  "An HTML/CSS school project",
+                  "Only web version available",
+                ]}
+                codeHref="https://github.com/watsum08/the-burger-place"
+                demoHref="https://www.the-burger-place.web.app/"
+                imgHref="img/portfolio/theburgerplace.jpeg"
+                color={colorMode === "dark" ? "black" : "white"}
+              />
+            </SwiperSlide>
 
-          <SwiperSlide>
-            <PortfolioItem
-              name="Amelia's Bed and Breakfast 4"
-              tags={["Figma", "NextJS", "JavaScript"]}
-              description={[
-                "A bed and breakfast website.",
-                "Custom design made with Figma.",
-                "Created with Next.js in JavaScript.",
-              ]}
-              codeHref="https://github.com/watsum08/ameliasbnb-ch"
-              demoHref="https://www.ameliasbnb.ch"
-              imgHref="img/portfolio/ameliasbnb.jpeg"
-            />
-          </SwiperSlide>
-        </Swiper>
-      </Flex>
+            <SwiperSlide>
+              <PortfolioItem
+                name="Amelia's Bed and Breakfast"
+                tags={["Figma", "NextJS", "JavaScript"]}
+                description={[
+                  "A bed and breakfast website",
+                  "Custom design",
+                  "Created in Next.js with JavaScript",
+                ]}
+                codeHref="https://github.com/watsum08/ameliasbnb-ch"
+                demoHref="https://ameliasbnb.ch"
+                imgHref="img/portfolio/ameliasbnb.jpeg"
+                inProgress
+                color={colorMode === "dark" ? "black" : "white"}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <PortfolioItem
+                name="Swiss Algo Bots"
+                tags={["Figma", "NextJS", "TypeScript", "Spline"]}
+                description={[
+                  "An algo-trading bot web application",
+                  "NodeJS back-end",
+                  "Created in Next.js with TypeScript",
+                ]}
+                codeHref="https://github.com/watsum08/ameliasbnb-ch"
+                demoHref="https://swissalgobots.vercel.app"
+                imgHref="img/portfolio/swissalgobots.jpeg"
+                inProgress
+                isPrivate
+                color={colorMode === "dark" ? "black" : "white"}
+              />
+            </SwiperSlide>
+          </Swiper>
+        </Flex>
+      </Box>
     </Section>
   );
 };

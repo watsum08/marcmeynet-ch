@@ -1,16 +1,38 @@
 import { Box, Button, Flex, Image, Link as ChakraLink } from "@chakra-ui/react";
 import Link from "next/link";
+import { useInView } from "react-hook-inview";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
-const AboutMeSection = () => {
+const AboutMeSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+  const [ref, inView] = useInView();
+
   return (
-    <Section bg="rgba(255, 255, 255, 0.15)" id="aboutme">
-      <Flex align="flex-start" justify="space-between">
-        <Box pt={4}>
+    <Section
+      bg={
+        colorMode === "dark"
+          ? "rgba(255, 255, 255, 0.15)"
+          : "rgba(255, 255, 255, 0.85)"
+      }
+      id="aboutme"
+    >
+      <Flex
+        align="flex-start"
+        justify="space-between"
+        ref={ref}
+        transition="1s all ease-out"
+        opacity={inView ? 1 : 0}
+      >
+        <Box color={colorMode === "dark" ? "white" : "black"}>
           <SectionHeading text="Who am I ?" />
           <Box mt={16}>
-            <Box as="p" color="#fff" w="70%" lineHeight="180%" textAlign="justify">
+            <Box
+              as="p"
+              w="70%"
+              lineHeight="180%"
+              textAlign="justify"
+              fontSize="20px"
+            >
               Hi, my name is Marc Meynet and I&apos;m a full stack web
               developer. <br />
               <br />I love creating web and mobile applications offering a
@@ -23,24 +45,6 @@ const AboutMeSection = () => {
               different projects such as developing games or programming
               Raspberry Pi.
             </Box>
-
-            <Button
-              mt={8}
-              p={2}
-              pl={0}
-              bg="transparent"
-              fontSize="20px"
-              h="auto"
-              color="gray"
-              _hover={{ color: "white", fontWeight: 600 }}
-              _active={{}}
-              borderRadius="1px"
-              transition="0.3s all"
-              cursor="pointer"
-              w="fit-content"
-            >
-              Read more
-            </Button>
           </Box>
         </Box>
 
@@ -48,10 +52,11 @@ const AboutMeSection = () => {
           <Flex flexDir="column" gap={2} pr={2}>
             <ChakraLink as={Link} href="https://github.com/watsum08" isExternal>
               <Image
+                filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
                 src="icons/aboutme/github.svg"
                 opacity={0.8}
                 alt="Github"
-                w="42px"
+                w="54px"
                 _hover={{ opacity: 1, transform: "scale(1.1)" }}
                 transition="0.3s all"
                 rounded="2px"
@@ -64,10 +69,11 @@ const AboutMeSection = () => {
               isExternal
             >
               <Image
+                filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
                 src="icons/aboutme/stackoverflow.svg"
                 opacity={0.8}
                 alt="Stack Overflow"
-                w="42px"
+                w="54px"
                 _hover={{ opacity: 1, transform: "scale(1.1)" }}
                 transition="0.3s all"
                 rounded="2px"
@@ -76,10 +82,11 @@ const AboutMeSection = () => {
             </ChakraLink>
             <ChakraLink as={Link} href="#" isExternal>
               <Image
+                filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
                 src="icons/aboutme/linkedin.svg"
                 opacity={0.8}
                 alt="Linked In"
-                w="42px"
+                w="54px"
                 _hover={{ opacity: 1, transform: "scale(1.1)" }}
                 transition="0.3s all"
                 rounded="2px"
@@ -88,10 +95,11 @@ const AboutMeSection = () => {
             </ChakraLink>
             <ChakraLink as={Link} href="MarcAnthonyMeynet_CV.pdf" isExternal>
               <Image
+                filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
                 src="icons/aboutme/download.svg"
                 opacity={0.8}
                 alt="Download CV"
-                w="42px"
+                w="54px"
                 _hover={{ opacity: 1, transform: "scale(1.1)" }}
                 transition="0.3s all"
                 rounded="2px"
@@ -100,7 +108,7 @@ const AboutMeSection = () => {
             </ChakraLink>
           </Flex>
 
-          <Box w="400px" mr="100px">
+          <Box w="450px" mr="100px">
             <Image src="img/aboutme.png" alt="Photo of me" w="full" />
           </Box>
         </Flex>

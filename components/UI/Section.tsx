@@ -16,12 +16,13 @@ const Section = ({
     <Box
       color={color ?? "white"}
       px={16}
-      py="160px"
+      pt="120px"
+      pb="160px"
       m="auto"
-      minH="1000px"
+      h="full"
       bg={bg ?? "black"}
       id={id ?? "auto"}
-      borderTop="2px dashed black"
+      transition="0.5s all"
     >
       <MainContainer>{children}</MainContainer>
     </Box>
