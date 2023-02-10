@@ -1,7 +1,7 @@
 import Head from "next/head";
 import LandingSection from "../layout/LandingSection";
 import AboutMeSection from "../layout/AboutMeSection";
-import SkillsSection from "../layout/SkillsSection";
+import ToolsSection from "../layout/ToolsSection";
 import PortfolioSection from "../layout/PortfolioSection";
 import ContactSection from "../layout/ContactSection";
 import ReactPageScroller from "react-page-scroller";
@@ -30,11 +30,14 @@ export default function Home() {
 
           <AboutMeSection colorMode={colorMode} />
 
-          <SkillsSection colorMode={colorMode} />
+          <ToolsSection colorMode={colorMode} />
 
           <PortfolioSection colorMode={colorMode} />
 
-          <ContactSection colorMode={colorMode} />
+          <ContactSection
+            colorMode={colorMode}
+            setScrollToPage={setScrollToPage}
+          />
         </ReactPageScroller>
       </main>
     </>

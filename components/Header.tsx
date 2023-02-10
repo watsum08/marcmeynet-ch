@@ -27,10 +27,26 @@ const Header = ({
       pos="absolute"
       top={0}
       left={0}
-      ml={4}
+      ml={{ base: isOpen ? 4 : -8, md: 4 }}
       color={colorMode === "dark" ? "white" : "black"}
       fontSize="18px"
-      zIndex={999}
+      zIndex={1000}
+      flexDir={{ base: "column", md: "row" }}
+      pt={4}
+      mt={4}
+      transition="0.2s all ease-out"
+      bg={{
+        base: isOpen ? (colorMode === "dark" ? "black" : "white") : "none",
+        md: "none",
+      }}
+      border={{
+        base: isOpen
+          ? colorMode === "dark"
+            ? "2px solid white"
+            : "2px solid black"
+          : "none",
+        md: "none",
+      }}
     >
       <Button
         transform={`rotate(${isOpen ? 90 : 0}deg)`}
@@ -90,32 +106,38 @@ const Header = ({
 
       <List
         display="flex"
-        gap={12}
-        ml={12}
+        alignItems="center"
+        flexDir={{ base: "column", md: "row" }}
+        gap={{ base: 8, md: 10 }}
+        mt={{ base: 8, md: 0 }}
+        ml={{ base: 0, md: 10 }}
         opacity={isOpen ? 1 : 0}
-        transform={`translateX(${isOpen ? 0 : -96}px)`}
+        transform={{ base: "", md: `translateX(${isOpen ? 0 : -96}px)` }}
         transition="0.2s all ease-out"
         pointerEvents={isOpen ? "auto" : "none"}
       >
         <NavLink id={1} text="About me" setScrollToPage={setScrollToPage} />
-        <NavLink id={2} text="Skills" setScrollToPage={setScrollToPage} />
+        <NavLink id={2} text="Tools" setScrollToPage={setScrollToPage} />
         <NavLink id={3} text="Portfolio" setScrollToPage={setScrollToPage} />
         <NavLink id={4} text="Contact" setScrollToPage={setScrollToPage} />
         <IconButton
+          p={4}
           aria-label={colorMode === "dark" ? "Light mode" : "Dark mode"}
           bg="none"
-          _hover={{}}
-          _active={{}}
+          w="fit-content"
           onClick={() => {
             colorMode === "dark" ? setColorMode("light") : setColorMode("dark");
+            setScrollToPage(0);
           }}
+          transition="0.2s all ease-out"
+          _hover={{ transform: "scale(1.1)", cursor: "pointer" }}
+          _active={{ transform: "scale(1.2)" }}
         >
           <Box
             w="20px"
+            h="24px"
             aria-label={colorMode === "dark" ? "Light mode" : "Dark mode"}
             cursor="pointer"
-            transition="0.2s all ease-out"
-            _hover={{ transform: "scale(1.2)", cursor: "pointer" }}
           >
             {colorMode === "dark" ? (
               <svg
@@ -171,7 +193,8 @@ const NavLink = ({
     <ListItem
       transform="translateX(0px)"
       transition="0.2s all ease-out"
-      _hover={{ transform: "scale(1.2)" }}
+      _hover={{ transform: "scale(1.1)" }}
+      _active={{ transform: "scale(1.2)" }}
     >
       <Button
         textTransform="uppercase"

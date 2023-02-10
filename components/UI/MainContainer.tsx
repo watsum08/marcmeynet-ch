@@ -56,7 +56,7 @@ const MainContainer = ({
       /*bg={`rgba(0, 0, 0, ${scrollPercentage})`}*/
       cursor="default"
     >
-      <Container maxW="1440px">{children}</Container>
+      <Container maxW="1440px" p={0}>{children}</Container>
     </Box>
   );
 };

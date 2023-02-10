@@ -3,6 +3,8 @@ import Section from "../components/UI/Section";
 import Spline from "@splinetool/react-spline";
 import Typewriter from "typewriter-effect";
 import Header from "../components/Header";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const LandingSection = ({
   setScrollToPage,
@@ -13,51 +15,122 @@ const LandingSection = ({
   colorMode: "light" | "dark";
   setColorMode: (mode: "light" | "dark") => void;
 }) => {
-  return (
-    <Section bg={colorMode === "dark" ? "black" : "white"}>
-      <Header
-        setScrollToPage={setScrollToPage}
-        colorMode={colorMode}
-        setColorMode={setColorMode}
-      />
-      <Flex align="center" mt="-128px">
-        <Box
-          w="60%"
-          zIndex={999}
-          pos="relative"
-          pb="160px"
-          color={colorMode === "dark" ? "white" : "black"}
-        >
-          <Heading as="h1" fontSize="64px" fontWeight={600}>
-            Marc Meynet
-          </Heading>
-          <Flex align="center" gap={4} mt={2}>
-            <Heading as="h2" fontSize="32px" fontWeight={300} lineHeight="32px">
-              {/*text.split("").map((e, index) => (
-                <Box key={index} as="span" _hover={{ color: "#1FC742" }}>
-                  {e}
-                </Box>
-              ))*/}
-              <Typewriter
-                onInit={(typewriter) => {
-                  typewriter
-                    .changeDelay(40)
-                    .typeString("Bringing ideas to reality")
-                    .pauseFor(500)
-                    .typeString(", with code")
-                    .pauseFor(Infinity)
-                    .start();
-                }}
-              />
-            </Heading>
-          </Flex>
-        </Box>
+  const [splineLoaded, setSplineLoaded] = useState(false);
 
-        <Box w="full" h="1000px" zIndex={0} pos="relative" mt="-32px">
-          <Spline scene="https://prod.spline.design/yWFyWJZCJGd7V7fu/scene.splinecode" />
-        </Box>
-      </Flex>
-    </Section>
+  return (
+    <>
+      {splineLoaded ? (
+        ""
+      ) : (
+        <Flex pos="fixed" zIndex={1111} w="100vw" h="100vh" bg="black">
+          <Box m="auto" w="fit-content">
+            <Image
+              as={motion.img}
+              src="favicon.png"
+              alt="Loading icon"
+              w="64px"
+              h="auto"
+              m="auto"
+              animate={{
+                scale: [0.5, 1.5],
+              }}
+              transition="1s ease-in-out"
+            />
+            <Box mt={8}>
+              <Text
+                fontSize="24px"
+                fontWeight={600}
+                as={motion.span}
+                animate={{
+                  opacity: [0, 1],
+                }}
+                transition="1s ease-in-out"
+              >
+                Page is loading
+              </Text>
+            </Box>
+          </Box>
+        </Flex>
+      )}
+
+      <Section bg={colorMode === "dark" ? "black" : "white"}>
+        <Header
+          setScrollToPage={setScrollToPage}
+          colorMode={colorMode}
+          setColorMode={setColorMode}
+        />
+        <Flex
+          align="center"
+          mt={{ base: 0, lg: "-128px" }}
+          flexDir={{ base: "column", lg: "row" }}
+          textAlign={{ base: "center", md: "left"}}
+        >
+          <Box
+            w="fit-content"
+            zIndex={999}
+            pos="relative"
+            pb={{ base: 0, lg: "160px" }}
+            color={colorMode === "dark" ? "white" : "black"}
+            whiteSpace="nowrap"
+          >
+            <Heading
+              as="h1"
+              fontSize={{ base: "48px", md: "54px", xl: "64px" }}
+              fontWeight={600}
+            >
+              Marc Meynet
+            </Heading>
+            <Flex align="center" mt={2}>
+              <Heading
+                as="h2"
+                fontSize={{ base: "24px", md: "28px", xl: "32px" }}
+                fontWeight={300}
+                lineHeight="32px"
+              >
+                {/*text.split("").map((e, index) => (
+                    <Box key={index} as="span" _hover={{ color: "#1FC742" }}>
+                      {e}
+                    </Box>
+                  ))*/}
+                <Typewriter
+                  onInit={(typewriter) => {
+                    typewriter
+                      .changeDelay(40)
+                      .typeString("Bringing ideas to reality")
+                      .pauseFor(500)
+                      .typeString(", with code")
+                      .pauseFor(Infinity)
+                      .start();
+                  }}
+                />
+              </Heading>
+            </Flex>
+          </Box>
+
+          <Box
+            w="full"
+            transform={{
+              base: "scale(0.5)",
+              sm: "scale(0.6)",
+              md: "scale(0.65)",
+              xl: "scale(1)",
+            }}
+            zIndex={0}
+            pos="relative"
+            mt={{ base: "-240px", md: "-172px", lg: "-32px" }}
+            ml={{ base: "-172px", md: "13vw", lg: "-128px", xl: "0" }}
+          >
+            <Spline
+              scene="https://prod.spline.design/yWFyWJZCJGd7V7fu/scene.splinecode"
+              onLoad={() => {
+                setSplineLoaded(true);
+                console.log("spline loaded");
+              }}
+            />
+          </Box>
+        </Flex>
+      </Section>
+    </>
   );
 };
 

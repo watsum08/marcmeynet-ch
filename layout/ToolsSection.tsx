@@ -4,7 +4,7 @@ import { useInView } from "react-hook-inview";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
-const SkillsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
   const [ref, inView] = useInView({ threshold: 0.5 });
 
   return (
@@ -21,108 +21,108 @@ const SkillsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
         transition="0.8s all ease-out"
         opacity={inView ? 1 : 0}
       >
-        <SectionHeading text="Skills" />
+        <SectionHeading text="Tools" />
         <Box mt={12}>
-          <Text fontSize="20px">Here are some skills I have learned</Text>
+          <Text fontSize="20px">Here are some tools I use</Text>
           <Flex gap={32} mt={16} ref={ref}>
-            <SkillBox heading="Design" inView={inView}>
-              <SkillItem
+            <ToolBox heading="Design" inView={inView}>
+              <ToolItem
                 iconSrc="icons/skills/gimp.png"
                 text="GIMP"
                 href="https://www.gimp.org/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/figma.png"
                 text="Figma"
                 href="https://www.figma.com/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/magicavoxel.png"
                 text="MagicaVoxel"
                 href="https://ephtracy.github.io/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/spline.png"
                 text="Spline"
                 href="https://spline.design/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-            </SkillBox>
+            </ToolBox>
 
-            <SkillBox heading="Languages" inView={inView}>
-              <SkillItem
+            <ToolBox heading="Languages" inView={inView}>
+              <ToolItem
                 iconSrc="icons/skills/html5.png"
                 text="HTML"
                 href="https://html5.org/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/css3.png"
                 text="CSS"
                 href="https://www.w3.org/Style/CSS/Overview.en.html"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/javascript.png"
                 text="JavaScript"
                 href="https://www.javascript.com/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/typescript.png"
                 text="TypeScript"
                 href="https://www.typescriptlang.org/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/csharp.png"
                 text="C#"
                 href="https://learn.microsoft.com/en-us/dotnet/csharp/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/mysql.png"
                 text="MySQL"
                 href="https://www.mysql.com/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-            </SkillBox>
+            </ToolBox>
 
-            <SkillBox heading="Frameworks" inView={inView}>
-              <SkillItem
+            <ToolBox heading="Frameworks" inView={inView}>
+              <ToolItem
                 iconSrc="icons/skills/react.png"
                 text="React"
                 href="https://reactjs.org/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/nextjs.png"
                 text="Next.js"
                 href="https://nextjs.org/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/laravel.png"
                 text="Laravel"
                 href="https://laravel.com/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/svelte.png"
                 text="Svelte"
                 href="https://svelte.dev/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-              <SkillItem
+              <ToolItem
                 iconSrc="icons/skills/unity.png"
                 text="Unity"
                 href="https://unity.com/"
                 color={colorMode === "dark" ? "white" : "black"}
               />
-            </SkillBox>
+            </ToolBox>
           </Flex>
         </Box>
       </Box>
@@ -130,7 +130,7 @@ const SkillsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
   );
 };
 
-const SkillItem = ({
+const ToolItem = ({
   iconSrc,
   text,
   href,
@@ -161,7 +161,7 @@ const SkillItem = ({
   );
 };
 
-const SkillBox = ({
+const ToolBox = ({
   heading,
   children,
   inView,
@@ -186,4 +186,4 @@ const SkillBox = ({
   );
 };
 
-export default SkillsSection;
+export default ToolsSection;

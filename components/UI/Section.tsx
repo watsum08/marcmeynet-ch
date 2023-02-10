@@ -15,7 +15,7 @@ const Section = ({
   return (
     <Box
       color={color ?? "white"}
-      px={16}
+      px={{ base: 0, lg: 16 }}
       pt="120px"
       pb="160px"
       m="auto"

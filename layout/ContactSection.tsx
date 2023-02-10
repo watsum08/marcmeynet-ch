@@ -15,6 +15,7 @@ import {
   Textarea,
   useDisclosure,
   Text,
+  Avatar,
 } from "@chakra-ui/react";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
@@ -23,17 +24,42 @@ import { FormEvent, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useInView } from "react-hook-inview";
 
-const ContactSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+const ContactSection = ({
+  colorMode,
+  setScrollToPage,
+}: {
+  colorMode: "light" | "dark";
+  setScrollToPage: (pageNum: number) => void;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const form = useRef<HTMLFormElement>(null);
+
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const messageRef = useRef<HTMLTextAreaElement | null>(null);
+  const [nameInvalid, setNameInvalid] = useState(false);
+  const [emailInvalid, setEmailInvalid] = useState(false);
+  const [messageInvalid, setMessageInvalid] = useState(false);
 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
 
-    setIsLoading(true);
-    onOpen();
+    if (nameRef.current && nameRef.current.value.length < 3) {
+      setNameInvalid(true);
+    }
+    if (messageRef.current && messageRef.current.value.length < 3) {
+      setMessageInvalid(true);
+    }
 
-    if (form.current) {
+    if (
+      emailRef.current &&
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(emailRef.current.value)
+    ) {
+      setEmailInvalid(true);
+    } else if (form.current && !nameInvalid && !messageInvalid) {
+      setIsLoading(true);
+      onOpen();
+
       emailjs
         .sendForm(
           "service_vf7y90n",
@@ -75,42 +101,74 @@ const ContactSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
         color={colorMode === "dark" ? "black" : "white"}
         transition="0.8s all ease-out"
         opacity={inView ? 1 : 0}
+        pos="relative"
       >
         <SectionHeading text="Contact" lastSection />
 
-        <Flex justify="space-between" align="flex-start" mt={16}>
-          <Box
-            fontSize="20px"
-            _selection={{ bg: "black", color: "white" }}
-            ref={ref}
-          >
-            <Text
-              transition="0.3s all"
-              transform={`translateX(${inView ? 0 : -2000}px)`}
-            >
-              Wanna hire me or just wanna say hello ?
-            </Text>
-            <br />
-            <Text
-              transition="0.3s all 0.6s"
-              transform={`translateX(${inView ? 0 : -2000}px)`}
-            >
-              Send me a message and I&apos;ll make sure we get in touch !
-            </Text>
-          </Box>
+        <Flex justify="space-between" align="flex-start" mt={8}>
+          <Flex>
+            <Avatar
+              name="Marc Meynet"
+              src="img/contact/avatar.png"
+              size="2xl"
+              p={1}
+            />
+
+            <Flex mt={16} pos="relative">
+              <Box
+                w={0}
+                h={0}
+                pos="absolute"
+                borderBottom="36px solid transparent"
+                borderRight={
+                  colorMode === "dark" ? "36px solid black" : "36px solid white"
+                }
+              />
+              <Box
+                pos="absolute"
+                left="24px"
+                whiteSpace="nowrap"
+                fontSize="20px"
+                _selection={{ bg: "black", color: "white" }}
+                ref={ref}
+                p={10}
+                bg={colorMode === "dark" ? "black" : "white"}
+                color={colorMode === "dark" ? "white" : "black"}
+                rounded="12px"
+                lineHeight="120%"
+              >
+                <Text transition="0.3s all 0.5s" opacity={inView ? 1 : 0}>
+                  Wanna hire me or just wanna say hello ?
+                </Text>
+                <br />
+                <Text transition="0.3s all 1s" opacity={inView ? 1 : 0}>
+                  Send me a message and I&apos;ll make sure we get in touch !
+                </Text>
+              </Box>
+            </Flex>
+          </Flex>
 
           <form ref={form} onSubmit={sendEmail}>
             <FormControl w="400px" mr={16}>
               <FormLabel textTransform="uppercase">Name</FormLabel>
               <Input
+                ref={nameRef}
                 name="from_name"
+                bg={nameInvalid ? "red.400" : "none"}
                 type="text"
                 outline={
                   colorMode === "dark" ? "2px solid black" : "2px solid white"
                 }
                 border="none"
                 rounded="4px"
-                _selection={{ bg: "black", color: "white" }}
+                _selection={
+                  colorMode === "dark" ? { bg: "black", color: "white" } : {}
+                }
+                onChange={(e) => {
+                  if (e.target.value.length >= 3) {
+                    setNameInvalid(false);
+                  }
+                }}
               />
 
               <FormLabel textTransform="uppercase" mt={4}>
@@ -124,7 +182,20 @@ const ContactSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
                 }
                 border="none"
                 rounded="4px"
-                _selection={{ bg: "black", color: "white" }}
+                _selection={
+                  colorMode === "dark" ? { bg: "black", color: "white" } : {}
+                }
+                ref={emailRef}
+                onChange={(e) => {
+                  if (
+                    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+                      e.target.value
+                    )
+                  ) {
+                    setEmailInvalid(false);
+                  }
+                }}
+                bg={emailInvalid ? "red.400" : "none"}
               />
 
               <FormLabel textTransform="uppercase" mt={4}>
@@ -132,14 +203,23 @@ const ContactSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
               </FormLabel>
               <Textarea
                 name="message"
+                ref={messageRef}
+                bg={messageInvalid ? "red.400" : "none"}
                 outline={
                   colorMode === "dark" ? "2px solid black" : "2px solid white"
                 }
                 border="none"
                 rounded="4px"
-                _selection={{ bg: "black", color: "white" }}
+                _selection={
+                  colorMode === "dark" ? { bg: "black", color: "white" } : {}
+                }
                 resize="none"
                 h="240px"
+                onChange={(e) => {
+                  if (e.target.value.length >= 3) {
+                    setMessageInvalid(false);
+                  }
+                }}
               />
 
               <Button
@@ -241,6 +321,20 @@ const ContactSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
             </ModalFooter>
           </ModalContent>
         </Modal>
+
+        <Flex justify="center" pos="relative" bottom={-12}>
+          <Button
+            bg="none"
+            _hover={{ transform: "scale(1.1)" }}
+            p={6}
+            textTransform="uppercase"
+            fontSize="20px"
+            _active={{ transform: "scale(1.2)" }}
+            onClick={() => setScrollToPage(0)}
+          >
+            Go back to top
+          </Button>
+        </Flex>
       </Box>
     </Section>
   );
