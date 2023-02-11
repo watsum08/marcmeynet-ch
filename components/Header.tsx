@@ -22,7 +22,7 @@ const Header = ({
 
   return (
     <Flex
-      p={8}
+      p={{ base: 4, md: 8 }}
       align="center"
       pos="absolute"
       top={0}
@@ -33,7 +33,7 @@ const Header = ({
       zIndex={1000}
       flexDir={{ base: "column", md: "row" }}
       pt={4}
-      mt={4}
+      mt={{ base: isOpen ? 4 : 0, md: 4 }}
       transition="0.2s all ease-out"
       bg={{
         base: isOpen ? (colorMode === "dark" ? "black" : "white") : "none",
@@ -54,21 +54,21 @@ const Header = ({
         _active={{}}
         bg="transparent"
         p={4}
-        py={6}
+        py={{ base: 4, md: 6 }}
         m={0}
         onClick={() => setIsOpen(!isOpen)}
         _hover={{ transform: `rotate(${isOpen ? 90 : 0}deg) scale(1.2)` }}
       >
         <Box
-          w="32px"
-          h="28px"
+          w={{ base: "24px", sm: "28px", md: "32px" }}
+          h="auto"
           aria-label="Menu"
           transition="0.2s all ease-out"
           cursor="pointer"
         >
           <svg
-            width="32"
-            height="24"
+            width="100%"
+            height="100%"
             viewBox="0 0 32 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

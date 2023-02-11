@@ -16,6 +16,8 @@ export default function Home() {
     setCurrentPage(num);
   };
 
+  const [blockScroll, setBlockScroll] = useState(false);
+
   return (
     <>
       <Head>
@@ -31,16 +33,18 @@ export default function Home() {
           customPageNumber={currentPage}
           handleScrollUnavailable={() => console.log("scroll unavilable")}
           onBeforePageScroll={() => console.log(currentPage)}
-          block
           /* I CAN TRY FIXING THE NEGATIVE CURRENTPAGE MOUSE SCROLL ISSUE BY BLOCKING SCROLL
           WHILE THE NEXT PAGE IS NOT COMPLETELY LOADED MAYBE WITH A TIMEOUT?,
           I SUPPOSE IT HAS SOMETHING TO DO WITH THE USEINVIEW ANIMATIONS
           CHECK blockScrollDown, blockScrollUp, onBeforePageScroll*/
+          blockScrollDown={blockScroll}
+          blockScrollUp={blockScroll}
         >
           <LandingSection
             setScrollToPage={handlePageChange}
             colorMode={colorMode}
             setColorMode={setColorMode}
+            setBlockScroll={setBlockScroll}
           />
 
           <AboutMeSection
@@ -50,7 +54,10 @@ export default function Home() {
 
           <ToolsSection colorMode={colorMode} />
 
-          <PortfolioSection colorMode={colorMode} />
+          <PortfolioSection
+            colorMode={colorMode}
+            setBlockScroll={setBlockScroll}
+          />
 
           <ContactSection
             colorMode={colorMode}

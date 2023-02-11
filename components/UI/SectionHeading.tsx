@@ -11,12 +11,14 @@ const SectionHeading = ({
     <Heading
       as="h3"
       fontWeight={300}
-      fontSize="42px"
+      fontSize={{ base: "36px", md: "40px", xl: "42px" }}
       _selection={
         lastSection
           ? { bg: "black", color: "white" }
           : { bg: "white", color: "black" }
       }
+      whiteSpace="nowrap"
+      mb={{ base: 4, md: 8, lg: 12 }}
     >
       {text}
     </Heading>

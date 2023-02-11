@@ -105,7 +105,7 @@ const ContactSection = ({
       >
         <SectionHeading text="Contact" lastSection />
 
-        <Flex justify="space-between" align="flex-start" mt={8}>
+        <Flex justify="space-between" align="flex-start">
           <Flex>
             <Avatar
               name="Marc Meynet"
@@ -114,7 +114,7 @@ const ContactSection = ({
               p={1}
             />
 
-            <Flex mt={16} pos="relative">
+            <Flex mt={16} pos="relative" zIndex={999}>
               <Box
                 w={0}
                 h={0}
@@ -128,7 +128,6 @@ const ContactSection = ({
                 pos="absolute"
                 left="24px"
                 whiteSpace="nowrap"
-                fontSize="20px"
                 _selection={{ bg: "black", color: "white" }}
                 ref={ref}
                 p={10}

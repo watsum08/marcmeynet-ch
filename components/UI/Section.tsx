@@ -15,14 +15,15 @@ const Section = ({
   return (
     <Box
       color={color ?? "white"}
-      px={{ base: 0, lg: 16 }}
-      pt="120px"
-      pb="160px"
+      px={{ base: 4, sm: 8, lg: 16 }}
+      pt={{ base: "16px", sm: "30px", md: "60px", xl: "120px"}}
+      pb={{ base: "20px", sm: "40px", md: "80px", xl: "160px"}}
       m="auto"
       h="full"
       bg={bg ?? "black"}
       id={id ?? "auto"}
       transition="0.5s all"
+      fontSize={{ base: "16px", md: "18px", xl: "20px" }}
     >
       <MainContainer>{children}</MainContainer>
     </Box>

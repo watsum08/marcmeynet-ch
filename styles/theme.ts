@@ -3,7 +3,11 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
   styles: {
     global: {
+      html: {
+        overscrollBehavior: "none",
+      },
       body: {
+        overscrollBehavior: "none",
         bg: "black",
         color: "white",
         cursor: 'url("cursor.png"), auto',

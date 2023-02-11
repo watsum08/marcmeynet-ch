@@ -20,10 +20,11 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
         color={colorMode === "dark" ? "white" : "black"}
         transition="0.8s all ease-out"
         opacity={inView ? 1 : 0}
+        textAlign={{ base: "center", md: "left" }}
       >
         <SectionHeading text="Tools" />
-        <Box mt={12}>
-          <Text fontSize="20px">Here are some tools I use</Text>
+        <Box>
+          <Text>Here are some tools I use</Text>
           <Flex gap={32} mt={16} ref={ref}>
             <ToolBox heading="Design" inView={inView}>
               <ToolItem
@@ -177,6 +178,8 @@ const ToolBox = ({
       transition="0.3s ease-out"
       transformOrigin="0% 100%"
       transform={`scaleX(${inView ? 1 : 0})`}
+      textAlign="left"
+      minW="fit-content"
     >
       <Box textTransform="uppercase" fontSize="16px" fontWeight={500}>
         {heading}

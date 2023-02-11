@@ -29,21 +29,21 @@ const AboutMeSection = ({
       id="aboutme"
     >
       <Flex
-        align="flex-start"
+        align={{ base: "center", md: "flex-start" }}
         justify="space-between"
         ref={ref}
         transition="1s all ease-out"
         opacity={inView ? 1 : 0}
+        flexDir={{ base: "column", md: "row" }}
+        textAlign={{ base: "center", md: "left" }}
       >
         <Box color={colorMode === "dark" ? "white" : "black"}>
           <SectionHeading text="Hello, World !" />
-          <Box mt={16}>
+          <Box>
             <Box
               as="p"
-              w="80%"
-              lineHeight="180%"
-              textAlign="left"
-              fontSize="20px"
+              w={{ base: "95%", lg: "90%", xl: "80%" }}
+              lineHeight={{ base: "100%", md: "160%", lg: "180%" }}
             >
               My name is Marc Meynet. I&apos;m a 23 years old web developer from
               Switzerland. <br />
@@ -64,8 +64,24 @@ const AboutMeSection = ({
           </Box>
         </Box>
 
-        <Flex justify="space-between" align="flex-end">
-          <Flex flexDir="column" gap={2} pr={2}>
+        <Flex
+          justify="space-between"
+          align="flex-end"
+          mr={{ base: 0, xl: 16 }}
+          transform={{
+            base: "scale(0.5)",
+            sm: "scale(0.6)",
+            md: "scale(0.85)",
+            xl: "scale(1)",
+          }}
+        >
+          <Flex
+            flexDir="column"
+            gap={2}
+            pr={{ base: 6, sm: 4, md: 2 }}
+            transform={{ base: "scale(1.5)", sm: "scale(1)" }}
+            mb={{base: "72px", sm: 0}}
+          >
             <ChakraLink as={Link} href="https://github.com/watsum08" isExternal>
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
@@ -145,7 +161,7 @@ const AboutMeSection = ({
             </ChakraLink>
           </Flex>
 
-          <Box w="450px" mr="100px">
+          <Box w="450px" mt={{ base: -44, sm: -32, md: 0 }}>
             <Image src="img/aboutme.png" alt="Photo of me" w="full" />
           </Box>
         </Flex>

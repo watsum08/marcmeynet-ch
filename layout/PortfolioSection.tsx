@@ -16,7 +16,13 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useInView } from "react-hook-inview";
 
-const PortfolioSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+const PortfolioSection = ({
+  colorMode,
+  setBlockScroll,
+}: {
+  colorMode: "light" | "dark";
+  setBlockScroll: (toggle: boolean) => void;
+}) => {
   const [ref, inView] = useInView();
 
   return (
@@ -36,9 +42,7 @@ const PortfolioSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
       >
         <SectionHeading text="Portfolio" />
 
-        <Text fontSize="20px" mt={12}>
-          Drag or use mouse wheel to check all of my projects
-        </Text>
+        <Text>Drag or use mouse wheel to check all of my projects</Text>
 
         <Flex w="100vw" pos="absolute" left={0} mt={16}>
           <Swiper
@@ -54,6 +58,8 @@ const PortfolioSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
             centeredSlides
             loop
             loopedSlides={2}
+            onTouchStart={() => setBlockScroll(true)}
+            onTouchEnd={() => setBlockScroll(false)}
           >
             <SwiperSlide>
               <PortfolioItem

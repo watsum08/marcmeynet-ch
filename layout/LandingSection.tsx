@@ -10,10 +10,12 @@ const LandingSection = ({
   setScrollToPage,
   colorMode,
   setColorMode,
+  setBlockScroll,
 }: {
   setScrollToPage: (pageNum: number) => void;
   colorMode: "light" | "dark";
   setColorMode: (mode: "light" | "dark") => void;
+  setBlockScroll: (toggle: boolean) => void;
 }) => {
   const [splineLoaded, setSplineLoaded] = useState(false);
 
@@ -61,7 +63,7 @@ const LandingSection = ({
         />
         <Flex
           align="center"
-          mt={{ base: 0, lg: "-128px" }}
+          mt={{ base: 16, md: 24, lg: "-128px" }}
           flexDir={{ base: "column", lg: "row" }}
           textAlign={{ base: "center", lg: "left" }}
           justify="center"
@@ -77,7 +79,7 @@ const LandingSection = ({
           >
             <Heading
               as="h1"
-              fontSize={{ base: "48px", md: "54px", xl: "64px" }}
+              fontSize={{ base: "36px", sm: "44px", md: "54px", xl: "64px" }}
               fontWeight={600}
             >
               Marc Meynet
@@ -85,26 +87,25 @@ const LandingSection = ({
             <Flex align="center" mt={2}>
               <Heading
                 as="h2"
-                fontSize={{ base: "24px", md: "28px", xl: "32px" }}
+                fontSize={{ base: "18px", md: "28px", xl: "32px" }}
                 fontWeight={300}
-                lineHeight="32px"
+                lineHeight={{ base: "24px", md: "32px" }}
               >
-                {/*text.split("").map((e, index) => (
-                    <Box key={index} as="span" _hover={{ color: "#1FC742" }}>
-                      {e}
-                    </Box>
-                  ))*/}
-                <Typewriter
-                  onInit={(typewriter) => {
-                    typewriter
-                      .changeDelay(40)
-                      .typeString("Bringing ideas to reality")
-                      .pauseFor(500)
-                      .typeString(", with code")
-                      .pauseFor(Infinity)
-                      .start();
-                  }}
-                />
+                {splineLoaded ? (
+                  <Typewriter
+                    onInit={(typewriter) => {
+                      typewriter
+                        .changeDelay(40)
+                        .typeString("Bringing ideas to reality")
+                        .pauseFor(500)
+                        .typeString(", with code")
+                        .pauseFor(Infinity)
+                        .start();
+                    }}
+                  />
+                ) : (
+                  ""
+                )}
               </Heading>
             </Flex>
           </Box>
@@ -112,25 +113,27 @@ const LandingSection = ({
           <Flex
             w="50%"
             transform={{
-              base: "scale(0.5)",
+              base: "scale(0.45)",
               sm: "scale(0.6)",
               md: "scale(0.7)",
               xl: "scale(1)",
             }}
             zIndex={0}
             pos="relative"
-            mt={{ base: "-240px", md: "-172px", lg: "-32px" }}
+            mt={{ base: "-250px", sm: "-220px", md: "-172px", lg: "-32px" }}
             mx="auto"
             align="flex-start"
             justify="center"
           >
-              <Spline
-                scene="https://prod.spline.design/yWFyWJZCJGd7V7fu/scene.splinecode"
-                onLoad={() => {
-                  setSplineLoaded(true);
-                  console.log("spline loaded");
-                }}
-              />
+            <Spline
+              scene="https://prod.spline.design/yWFyWJZCJGd7V7fu/scene.splinecode"
+              onLoad={() => {
+                setSplineLoaded(true);
+                console.log("spline loaded");
+              }}
+              onTouchStart={() => setBlockScroll(true)}
+              onTouchEnd={() => setBlockScroll(false)}
+            />
           </Flex>
         </Flex>
       </Section>
