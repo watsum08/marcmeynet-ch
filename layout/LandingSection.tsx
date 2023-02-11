@@ -63,7 +63,8 @@ const LandingSection = ({
           align="center"
           mt={{ base: 0, lg: "-128px" }}
           flexDir={{ base: "column", lg: "row" }}
-          textAlign={{ base: "center", md: "left"}}
+          textAlign={{ base: "center", lg: "left" }}
+          justify="center"
         >
           <Box
             w="fit-content"
@@ -72,6 +73,7 @@ const LandingSection = ({
             pb={{ base: 0, lg: "160px" }}
             color={colorMode === "dark" ? "white" : "black"}
             whiteSpace="nowrap"
+            mx="auto"
           >
             <Heading
               as="h1"
@@ -107,27 +109,29 @@ const LandingSection = ({
             </Flex>
           </Box>
 
-          <Box
-            w="full"
+          <Flex
+            w="50%"
             transform={{
               base: "scale(0.5)",
               sm: "scale(0.6)",
-              md: "scale(0.65)",
+              md: "scale(0.7)",
               xl: "scale(1)",
             }}
             zIndex={0}
             pos="relative"
             mt={{ base: "-240px", md: "-172px", lg: "-32px" }}
-            ml={{ base: "-172px", md: "13vw", lg: "-128px", xl: "0" }}
+            mx="auto"
+            align="flex-start"
+            justify="center"
           >
-            <Spline
-              scene="https://prod.spline.design/yWFyWJZCJGd7V7fu/scene.splinecode"
-              onLoad={() => {
-                setSplineLoaded(true);
-                console.log("spline loaded");
-              }}
-            />
-          </Box>
+              <Spline
+                scene="https://prod.spline.design/yWFyWJZCJGd7V7fu/scene.splinecode"
+                onLoad={() => {
+                  setSplineLoaded(true);
+                  console.log("spline loaded");
+                }}
+              />
+          </Flex>
         </Flex>
       </Section>
     </>

@@ -1,10 +1,22 @@
-import { Box, Button, Flex, Image, Link as ChakraLink } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  IconButton,
+  Image,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useInView } from "react-hook-inview";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
-const AboutMeSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+const AboutMeSection = ({
+  colorMode,
+  setScrollToPage,
+}: {
+  colorMode: "light" | "dark";
+  setScrollToPage: (pageNum: number) => void;
+}) => {
   const [ref, inView] = useInView();
 
   return (
@@ -24,26 +36,30 @@ const AboutMeSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
         opacity={inView ? 1 : 0}
       >
         <Box color={colorMode === "dark" ? "white" : "black"}>
-          <SectionHeading text="Who am I ?" />
+          <SectionHeading text="Hello, World !" />
           <Box mt={16}>
             <Box
               as="p"
-              w="70%"
+              w="80%"
               lineHeight="180%"
-              textAlign="justify"
+              textAlign="left"
               fontSize="20px"
             >
-              Hi, my name is Marc Meynet and I&apos;m a full stack web
-              developer. <br />
-              <br />I love creating web and mobile applications offering a
-              modern and intuitive design. I&apos;m highly interested in all
-              kinds of projects and do my best for every single one.
+              My name is Marc Meynet. I&apos;m a 23 years old web developer from
+              Switzerland. <br />
+              <br />I love designing and creating web and mobile applications.
               <br />
               <br />
-              IT being a fast evolving industry, I always look forward to stay
-              updated with modern technologies. I also enjoy working on
-              different projects such as developing games or programming
-              Raspberry Pi.
+              Technology has always been my biggest passion. IT evolves very
+              quickly and that&apos;s what motivates me to stay updated with the
+              latest tech.
+              <br />
+              <br />
+              For every project, my goal is to build a unique but intuitive
+              design.
+              <br />
+              <br />
+              Shall we get started ?
             </Box>
           </Box>
         </Box>
@@ -93,6 +109,27 @@ const AboutMeSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
                 border="1px solid #333"
               />
             </ChakraLink>
+            <IconButton
+              aria-label="Send message"
+              onClick={() => setScrollToPage(4)}
+              bg="none"
+              transition="0.3s all"
+              opacity={0.8}
+              _hover={{ opacity: 1, transform: "scale(1.1)" }}
+              _active={{}}
+              p={0}
+              mx={0}
+              my="6px"
+            >
+              <Image
+                filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
+                src="icons/aboutme/mail.svg"
+                alt="Message"
+                w="54px"
+                rounded="2px"
+                border="1px solid #333"
+              />
+            </IconButton>
             <ChakraLink as={Link} href="MarcAnthonyMeynet_CV.pdf" isExternal>
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}

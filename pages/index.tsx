@@ -28,7 +28,10 @@ export default function Home() {
             setColorMode={setColorMode}
           />
 
-          <AboutMeSection colorMode={colorMode} />
+          <AboutMeSection
+            colorMode={colorMode}
+            setScrollToPage={setScrollToPage}
+          />
 
           <ToolsSection colorMode={colorMode} />
 
