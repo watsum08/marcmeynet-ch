@@ -9,8 +9,12 @@ import ReactPageScroller from "react-page-scroller";
 import { useState } from "react";
 
 export default function Home() {
-  const [scrollToPage, setScrollToPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState<number | undefined>(0);
   const [colorMode, setColorMode] = useState<"light" | "dark">("dark");
+
+  const handlePageChange = (num: number) => {
+    setCurrentPage(num);
+  };
 
   return (
     <>
@@ -21,16 +25,27 @@ export default function Home() {
         <link rel="icon" href="favicon.png" />
       </Head>
       <main>
-        <ReactPageScroller animationTimer={500} customPageNumber={scrollToPage}>
+        <ReactPageScroller
+          animationTimer={300}
+          pageOnChange={handlePageChange}
+          customPageNumber={currentPage}
+          handleScrollUnavailable={() => console.log("scroll unavilable")}
+          onBeforePageScroll={() => console.log(currentPage)}
+          block
+          /* I CAN TRY FIXING THE NEGATIVE CURRENTPAGE MOUSE SCROLL ISSUE BY BLOCKING SCROLL
+          WHILE THE NEXT PAGE IS NOT COMPLETELY LOADED MAYBE WITH A TIMEOUT?,
+          I SUPPOSE IT HAS SOMETHING TO DO WITH THE USEINVIEW ANIMATIONS
+          CHECK blockScrollDown, blockScrollUp, onBeforePageScroll*/
+        >
           <LandingSection
-            setScrollToPage={setScrollToPage}
+            setScrollToPage={handlePageChange}
             colorMode={colorMode}
             setColorMode={setColorMode}
           />
 
           <AboutMeSection
             colorMode={colorMode}
-            setScrollToPage={setScrollToPage}
+            setScrollToPage={handlePageChange}
           />
 
           <ToolsSection colorMode={colorMode} />
@@ -39,7 +54,7 @@ export default function Home() {
 
           <ContactSection
             colorMode={colorMode}
-            setScrollToPage={setScrollToPage}
+            setScrollToPage={handlePageChange}
           />
         </ReactPageScroller>
       </main>

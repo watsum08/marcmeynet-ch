@@ -40,7 +40,7 @@ const PortfolioSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
           Drag or use mouse wheel to check all of my projects
         </Text>
 
-        <Flex w="calc(100vw - 10px)" pos="absolute" left={0} mt={16}>
+        <Flex w="100vw" pos="absolute" left={0} mt={16}>
           <Swiper
             modules={[Scrollbar, A11y, Autoplay, Mousewheel]}
             autoplay={{
