@@ -79,8 +79,8 @@ const AboutMeSection = ({
             flexDir="column"
             gap={2}
             pr={{ base: 6, sm: 4, md: 2 }}
-            transform={{ base: "scale(1.5)", sm: "scale(1)" }}
-            mb={{base: "72px", sm: 0}}
+            transform={{ base: "scale(1.5)", sm: "scale(1.25)", md: "scale(1)" }}
+            mb={{base: "72px", sm: "36px", md: 0}}
           >
             <ChakraLink as={Link} href="https://github.com/watsum08" isExternal>
               <Image

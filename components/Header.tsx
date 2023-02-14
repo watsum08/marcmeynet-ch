@@ -22,7 +22,7 @@ const Header = ({
 
   return (
     <Flex
-      p={{ base: 4, md: 8 }}
+      p={{ base: 4, sm: 6, md: 8 }}
       align="center"
       pos="absolute"
       top={0}

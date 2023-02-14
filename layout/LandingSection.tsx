@@ -87,7 +87,7 @@ const LandingSection = ({
             <Flex align="center" mt={2}>
               <Heading
                 as="h2"
-                fontSize={{ base: "18px", md: "28px", xl: "32px" }}
+                fontSize={{ base: "18px", sm: "24px", md: "28px", xl: "32px" }}
                 fontWeight={300}
                 lineHeight={{ base: "24px", md: "32px" }}
               >
