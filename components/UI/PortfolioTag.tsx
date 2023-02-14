@@ -8,6 +8,7 @@ const PortfolioTag = ({ text }: { text: string }) => {
       px={3}
       py={1}
       w="fit-content"
+      fontSize={{ base: "14px", lg: "16px" }}
       fontWeight={500}
     >
       {text}

@@ -18,7 +18,8 @@ const SectionHeading = ({
           : { bg: "white", color: "black" }
       }
       whiteSpace="nowrap"
-      mb={{ base: 4, md: 8, lg: 12 }}
+      mb={{ base: 2, sm: 4, md: 8, lg: 12 }}
+      textAlign={{ base: "center", md: "left" }}
     >
       {text}
     </Heading>

@@ -102,35 +102,53 @@ const ContactSection = ({
         transition="0.8s all ease-out"
         opacity={inView ? 1 : 0}
         pos="relative"
+        ref={ref}
       >
         <SectionHeading text="Contact" lastSection />
 
-        <Flex justify="space-between" align="flex-start">
-          <Flex>
+        <Flex
+          justify="space-between"
+          align={{ base: "center", xl: "flex-start" }}
+          flexDir={{ base: "column", xl: "row" }}
+          gap={4}
+        >
+          <Flex
+            flexDir={{ base: "column", md: "row" }}
+            ml={{ base: 0, md: -36, lg: -44, xl: 0 }}
+          >
             <Avatar
               name="Marc Meynet"
               src="img/contact/avatar.png"
-              size="2xl"
-              p={1}
+              size={{ base: "xl", xl: "2xl" }}
+              mx={{ base: "auto", md: 0 }}
             />
 
-            <Flex mt={16} pos="relative" zIndex={999}>
+            <Flex
+              mt={{ base: 4, md: 16 }}
+              pos="relative"
+              zIndex={999}
+              flexDir={{ base: "column", md: "row" }}
+            >
               <Box
                 w={0}
                 h={0}
-                pos="absolute"
-                borderBottom="36px solid transparent"
-                borderRight={
-                  colorMode === "dark" ? "36px solid black" : "36px solid white"
-                }
+                left={{ base: 0, md: "32px" }}
+                mx="auto"
+                pos="relative"
+                borderTop={{
+                  base: "",
+                  md:
+                    colorMode === "dark"
+                      ? "36px solid black"
+                      : "36px solid white",
+                }}
+                borderLeft="36px solid transparent"
               />
               <Box
-                pos="absolute"
-                left="24px"
-                whiteSpace="nowrap"
+                pos="relative"
+                left={{ base: 0, md: 6 }}
                 _selection={{ bg: "black", color: "white" }}
-                ref={ref}
-                p={10}
+                p={{ base: 4, sm: 6, md: 7, xl: 8 }}
                 bg={colorMode === "dark" ? "black" : "white"}
                 color={colorMode === "dark" ? "white" : "black"}
                 rounded="12px"
@@ -148,7 +166,10 @@ const ContactSection = ({
           </Flex>
 
           <form ref={form} onSubmit={sendEmail}>
-            <FormControl w="400px" mr={16}>
+            <FormControl
+              w={{ base: "320px", md: "400px" }}
+              mr={{ base: 0, xl: 12 }}
+            >
               <FormLabel textTransform="uppercase">Name</FormLabel>
               <Input
                 ref={nameRef}
@@ -168,6 +189,8 @@ const ContactSection = ({
                     setNameInvalid(false);
                   }
                 }}
+                fontSize={{ base: "14px", md: "16px", lg: "20px" }}
+                h={{ base: "24px", sm: "28px", md: "32px", lg: "36px" }}
               />
 
               <FormLabel textTransform="uppercase" mt={4}>
@@ -195,6 +218,8 @@ const ContactSection = ({
                   }
                 }}
                 bg={emailInvalid ? "red.400" : "none"}
+                fontSize={{ base: "14px", md: "16px", lg: "20px" }}
+                h={{ base: "24px", sm: "28px", md: "32px", lg: "36px" }}
               />
 
               <FormLabel textTransform="uppercase" mt={4}>
@@ -213,38 +238,41 @@ const ContactSection = ({
                   colorMode === "dark" ? { bg: "black", color: "white" } : {}
                 }
                 resize="none"
-                h="240px"
+                h={{ base: "100px", sm: "140px", md: "180px", lg: "240px" }}
                 onChange={(e) => {
                   if (e.target.value.length >= 3) {
                     setMessageInvalid(false);
                   }
                 }}
+                fontSize={{ base: "14px", md: "16px", lg: "20px" }}
               />
 
-              <Button
-                type="submit"
-                textTransform="uppercase"
-                px={5}
-                py={3}
-                mt={4}
-                h="auto"
-                color={colorMode === "dark" ? "white" : "black"}
-                bg={colorMode === "dark" ? "black" : "white"}
-                rounded="2px"
-                transition="0.3s all"
-                _hover={{
-                  bg: colorMode === "dark" ? "white" : "black",
-                  color: colorMode === "dark" ? "black" : "white",
-                  outline:
-                    colorMode === "dark"
-                      ? "2px solid black"
-                      : "2px solid white",
-                }}
-                _active={{ bg: "#aaa" }}
-                isDisabled={isLoading}
-              >
-                Send
-              </Button>
+              <Flex w="full" justify={{ base: "center", xl: "flex-start" }}>
+                <Button
+                  type="submit"
+                  textTransform="uppercase"
+                  px={5}
+                  py={3}
+                  mt={4}
+                  h="auto"
+                  color={colorMode === "dark" ? "white" : "black"}
+                  bg={colorMode === "dark" ? "black" : "white"}
+                  rounded="2px"
+                  transition="0.3s all"
+                  _hover={{
+                    bg: colorMode === "dark" ? "white" : "black",
+                    color: colorMode === "dark" ? "black" : "white",
+                    outline:
+                      colorMode === "dark"
+                        ? "2px solid black"
+                        : "2px solid white",
+                  }}
+                  _active={{ bg: "#aaa" }}
+                  isDisabled={isLoading}
+                >
+                  Send
+                </Button>
+              </Flex>
             </FormControl>
           </form>
         </Flex>
@@ -321,13 +349,25 @@ const ContactSection = ({
           </ModalContent>
         </Modal>
 
-        <Flex justify="center" pos="relative" bottom={-12}>
+        <Flex
+          justify="center"
+          pos="relative"
+          bottom={{
+            base: -4,
+            sm: -6,
+            md: -8,
+            lg: -12,
+            xl: -16,
+            "2xl": -20,
+            "3xl": -24,
+          }}
+        >
           <Button
             bg="none"
             _hover={{ transform: "scale(1.1)" }}
-            p={6}
+            p={{ base: 2, md: 4, lg: 6 }}
             textTransform="uppercase"
-            fontSize="20px"
+            fontSize={{ base: "16px", md: "18px", lg: "20px" }}
             _active={{ transform: "scale(1.2)" }}
             onClick={() => setScrollToPage(0)}
           >

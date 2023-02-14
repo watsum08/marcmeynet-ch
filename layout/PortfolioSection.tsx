@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, useBreakpoint } from "@chakra-ui/react";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
@@ -24,6 +24,7 @@ const PortfolioSection = ({
   setBlockScroll: (toggle: boolean) => void;
 }) => {
   const [ref, inView] = useInView();
+  const breakpoint = useBreakpoint({ ssr: false });
 
   return (
     <Section
@@ -39,22 +40,30 @@ const PortfolioSection = ({
         transition="0.8s all ease-out"
         opacity={inView ? 1 : 0}
         ref={ref}
+        textAlign={{ base: "center", md: "left" }}
       >
         <SectionHeading text="Portfolio" />
 
         <Text>Drag or use mouse wheel to check all of my projects</Text>
 
-        <Flex w="100vw" pos="absolute" left={0} mt={16}>
+        <Flex w="100vw" pos="absolute" left={0} mt={{ base: 8, lg: 16 }}>
           <Swiper
             modules={[Scrollbar, A11y, Autoplay, Mousewheel]}
             autoplay={{
-              delay: 4000,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
             mousewheel
             spaceBetween={256}
-            slidesPerView={2}
+            slidesPerView={
+              breakpoint === "base" ||
+              breakpoint === "sm" ||
+              breakpoint === "md" ||
+              breakpoint === "lg"
+                ? 1
+                : 2
+            }
             centeredSlides
             loop
             loopedSlides={2}
@@ -64,7 +73,7 @@ const PortfolioSection = ({
             <SwiperSlide>
               <PortfolioItem
                 name="My portfolio website"
-                tags={["Figma", "NextJS", "TypeScript", "Spline"]}
+                tags={["NextJS", "TypeScript", "Spline"]}
                 description={[
                   "What you're seeing right now",
                   "Custom design",
@@ -146,7 +155,7 @@ const PortfolioSection = ({
             <SwiperSlide>
               <PortfolioItem
                 name="Swiss Algo Bots"
-                tags={["Figma", "NextJS", "TypeScript", "Spline"]}
+                tags={["NextJS", "TypeScript", "Spline"]}
                 description={[
                   "An algo-trading bot web application",
                   "NodeJS back-end",

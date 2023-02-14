@@ -37,8 +37,7 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
         <Box ref={ref}>
           <Text>Here are some tools I use</Text>
           {breakpoint === "base" ||
-          breakpoint === "sm" ||
-          breakpoint === "md" ? (
+          breakpoint === "sm" ? (
             <Flex gap={{ base: 2, md: 4, lg: 8 }} mt={8} justify="space-evenly">
               <Flex mt={8} gap={3} flexDir="column" maxW="200px">
                 <ToolNavBtn
