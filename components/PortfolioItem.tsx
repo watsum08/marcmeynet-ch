@@ -21,6 +21,7 @@ const PortfolioItem = ({
   inProgress,
   isPrivate,
   color,
+  language,
 }: {
   name: string;
   tags: string[];
@@ -32,6 +33,7 @@ const PortfolioItem = ({
   inProgress?: boolean;
   isPrivate?: boolean;
   color: string;
+  language: string;
 }) => {
   return (
     <Box
@@ -62,7 +64,7 @@ const PortfolioItem = ({
             fontSize={{ base: "12px", sm: "14px", lg: "18px" }}
             fontWeight={500}
           >
-            Work in progress
+            {language === "en" ? "Work in progress" : "Travaux en cours"}
           </Text>
         ) : (
           ""
@@ -116,11 +118,17 @@ const PortfolioItem = ({
               onClick={
                 httpAlert
                   ? () =>
-                      alert(
-                        "You are about to visit " +
-                          name +
-                          "\nThis website is hosted on the owner's server. \nConnection may not be secured (HTTPS)"
-                      )
+                      language === "en"
+                        ? alert(
+                            "You are about to visit " +
+                              name +
+                              "\nThis website is hosted on the owner's server. \nConnection may not be secured (HTTP)"
+                          )
+                        : alert(
+                            "Vous allez visiter " +
+                              name +
+                              "\nCe site est hébergé sur le serveur du propriétaire. \nLa connexion ne peut être sécurisée (HTTP)"
+                          )
                   : () => {}
               }
             />
@@ -187,13 +195,17 @@ const PortfolioItem = ({
                     onClick={
                       isPrivate
                         ? () =>
-                            alert(
-                              "To protect the owner's data, this GitHub has been set to private."
-                            )
+                            language === "en"
+                              ? alert(
+                                  "To protect the owner's data, this GitHub repo has been set to private."
+                                )
+                              : alert(
+                                  "Pour protéger les données du propriétaire, ce repo GitHub a été défini privé."
+                                )
                         : () => {}
                     }
                   >
-                    View code
+                    {language === "en" ? "View code" : "Voir code"}
                   </Button>
                 </ChakraLink>
                 <ChakraLink as={Link} href={demoHref} _hover={{}} isExternal>
@@ -213,15 +225,21 @@ const PortfolioItem = ({
                     onClick={
                       httpAlert
                         ? () =>
-                            alert(
-                              "You are about to visit " +
-                                name +
-                                "\nThis website is hosted on the owner's server. \nConnection may not be secured (HTTPS)"
-                            )
+                            language === "en"
+                              ? alert(
+                                  "You are about to visit " +
+                                    name +
+                                    "\nThis website is hosted on the owner's server. \nConnection may not be secured (HTTP)"
+                                )
+                              : alert(
+                                  "Vous allez visiter " +
+                                    name +
+                                    "\nCe site est hébergé sur le serveur du propriétaire. \nLa connexion ne peut être sécurisée (HTTP)"
+                                )
                         : () => {}
                     }
                   >
-                    View demo
+                    {language === "en" ? "View demo" : "Voir demo"}
                   </Button>
                 </ChakraLink>
               </Flex>

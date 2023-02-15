@@ -13,7 +13,13 @@ import { useInView } from "react-hook-inview";
 import Section from "../components/UI/Section";
 import SectionHeading from "../components/UI/SectionHeading";
 
-const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
+const ToolsSection = ({
+  colorMode,
+  language,
+}: {
+  colorMode: "light" | "dark";
+  language: string;
+}) => {
   const [ref, inView] = useInView({ threshold: 0.5 });
   const [activeBox, setActiveBox] = useState(0);
   const breakpoint = useBreakpoint({ ssr: false });
@@ -33,11 +39,14 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
         opacity={inView ? 1 : 0}
         textAlign={{ base: "center", md: "left" }}
       >
-        <SectionHeading text="Tools" />
+        <SectionHeading text={language === "en" ? "Tools" : "Outils"} />
         <Box ref={ref}>
-          <Text>Here are some tools I use</Text>
-          {breakpoint === "base" ||
-          breakpoint === "sm" ? (
+          <Text>
+            {language === "en"
+              ? "Here are some tools I use"
+              : "Voici les outils que j'utilise"}
+          </Text>
+          {breakpoint === "base" || breakpoint === "sm" ? (
             <Flex gap={{ base: 2, md: 4, lg: 8 }} mt={8} justify="space-evenly">
               <Flex mt={8} gap={3} flexDir="column" maxW="200px">
                 <ToolNavBtn
@@ -64,7 +73,10 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
               </Flex>
 
               {activeBox === 0 ? (
-                <ToolBox heading="Design" inView={inView}>
+                <ToolBox
+                  heading={language === "en" ? "Design" : "Conception"}
+                  inView={inView}
+                >
                   <ToolItem
                     iconSrc="static/icons/skills/gimp.png"
                     text="GIMP"
@@ -91,7 +103,10 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
                   />
                 </ToolBox>
               ) : activeBox === 1 ? (
-                <ToolBox heading="Languages" inView={inView}>
+                <ToolBox
+                  heading={language === "en" ? "Languages" : "Langages"}
+                  inView={inView}
+                >
                   <ToolItem
                     iconSrc="static/icons/skills/html5.png"
                     text="HTML"

@@ -3,7 +3,7 @@ import Section from "../components/UI/Section";
 import Spline from "@splinetool/react-spline";
 import Typewriter from "typewriter-effect";
 import Header from "../components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const LandingSection = ({
@@ -11,11 +11,15 @@ const LandingSection = ({
   colorMode,
   setColorMode,
   setBlockScroll,
+  setLanguage,
+  language,
 }: {
   setScrollToPage: (pageNum: number) => void;
   colorMode: "light" | "dark";
   setColorMode: (mode: "light" | "dark") => void;
   setBlockScroll: (toggle: boolean) => void;
+  setLanguage: (lang: "en" | "fr") => void;
+  language: string;
 }) => {
   const [splineLoaded, setSplineLoaded] = useState(false);
 
@@ -60,6 +64,8 @@ const LandingSection = ({
           setScrollToPage={setScrollToPage}
           colorMode={colorMode}
           setColorMode={setColorMode}
+          setLanguage={setLanguage}
+          language={language}
         />
         <Flex
           align="center"
@@ -91,7 +97,7 @@ const LandingSection = ({
                 fontWeight={300}
                 lineHeight={{ base: "24px", md: "32px" }}
               >
-                {splineLoaded ? (
+                {language === "en" ? (
                   <Typewriter
                     onInit={(typewriter) => {
                       typewriter
@@ -104,7 +110,17 @@ const LandingSection = ({
                     }}
                   />
                 ) : (
-                  ""
+                  <Typewriter
+                    onInit={(typewriter) => {
+                      typewriter
+                        .changeDelay(40)
+                        .typeString("Transformer des idées en réalité")
+                        .pauseFor(500)
+                        .typeString(", avec du code")
+                        .pauseFor(Infinity)
+                        .start();
+                    }}
+                  />
                 )}
               </Heading>
             </Flex>

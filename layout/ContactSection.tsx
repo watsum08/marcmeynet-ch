@@ -27,9 +27,11 @@ import { useInView } from "react-hook-inview";
 const ContactSection = ({
   colorMode,
   setScrollToPage,
+  language,
 }: {
   colorMode: "light" | "dark";
   setScrollToPage: (pageNum: number) => void;
+  language: string;
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const form = useRef<HTMLFormElement>(null);
@@ -155,11 +157,15 @@ const ContactSection = ({
                 lineHeight="120%"
               >
                 <Text transition="0.3s all 0.5s" opacity={inView ? 1 : 0}>
-                  Wanna hire me or just wanna say hello ?
+                  {language === "en"
+                    ? "Wanna hire me or just wanna say hello ?"
+                    : "Vous voulez m'embaucher ou juste dire bonjour ?"}
                 </Text>
                 <br />
                 <Text transition="0.3s all 1s" opacity={inView ? 1 : 0}>
-                  Send me a message and I&apos;ll make sure we get in touch !
+                  {language === "en"
+                    ? "Send me a message and I'll make sure we get in touch !"
+                    : "Envoyez-moi un message et je vous contacterai au plus vite !"}
                 </Text>
               </Box>
             </Flex>
@@ -170,7 +176,9 @@ const ContactSection = ({
               w={{ base: "320px", md: "400px" }}
               mr={{ base: 0, xl: 12 }}
             >
-              <FormLabel textTransform="uppercase">Name</FormLabel>
+              <FormLabel textTransform="uppercase">
+                {language === "en" ? "Name" : "Nom"}
+              </FormLabel>
               <Input
                 ref={nameRef}
                 name="from_name"
@@ -270,7 +278,7 @@ const ContactSection = ({
                   _active={{ bg: "#aaa" }}
                   isDisabled={isLoading}
                 >
-                  Send
+                  {language === "en" ? "Send" : "Envoyer"}
                 </Button>
               </Flex>
             </FormControl>
@@ -310,14 +318,20 @@ const ContactSection = ({
                 <Spinner size="lg" />
               ) : hasNoError ? (
                 <Text fontSize="20px">
-                  Your message has been successfully sent.
+                  {language === "en"
+                    ? "Your message has been successfully sent."
+                    : "Votre message a été envoyé avec succès."}
                 </Text>
               ) : (
                 <Text fontSize="20px">
-                  We have encountered an error sending your message.
+                  {language === "en"
+                    ? "We have encountered an error sending your message."
+                    : "Nous avons rencontré une erreur lors de l'envoi de votre message."}
                   <br />
                   <br />
-                  Please try again.
+                  {language === "en"
+                    ? "Please try again."
+                    : "Merci de réssayer."}
                 </Text>
               )}
             </ModalBody>
@@ -343,7 +357,7 @@ const ContactSection = ({
                 _active={{ bg: "#aaa" }}
                 onClick={onClose}
               >
-                Close
+                {language === "en" ? "Close" : "Fermer"}
               </Button>
             </ModalFooter>
           </ModalContent>
@@ -371,7 +385,7 @@ const ContactSection = ({
             _active={{ transform: "scale(1.2)" }}
             onClick={() => setScrollToPage(0)}
           >
-            Go back to top
+            {language === "en" ? "Go back to top" : "Revenir en haut"}
           </Button>
         </Flex>
       </Box>

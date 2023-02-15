@@ -13,10 +13,14 @@ const Header = ({
   setScrollToPage,
   colorMode,
   setColorMode,
+  setLanguage,
+  language,
 }: {
   setScrollToPage: (pageNum: number) => void;
   colorMode: "light" | "dark";
   setColorMode: (mode: "light" | "dark") => void;
+  setLanguage: (lang: "en" | "fr") => void;
+  language: string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -116,10 +120,14 @@ const Header = ({
         transition="0.2s all ease-out"
         pointerEvents={isOpen ? "auto" : "none"}
       >
-        <NavLink id={1} text="About me" setScrollToPage={setScrollToPage} />
-        <NavLink id={2} text="Tools" setScrollToPage={setScrollToPage} />
-        <NavLink id={3} text="Portfolio" setScrollToPage={setScrollToPage} />
-        <NavLink id={4} text="Contact" setScrollToPage={setScrollToPage} />
+        <NavLink
+          id={1}
+          text={language === "en" ? "About me" : "Qui suis-je"}
+          setScrollToPage={setScrollToPage}
+        />
+        <NavLink id={2} text={language === "en" ? "Tools" : "Outils"} setScrollToPage={setScrollToPage} />
+        <NavLink id={3} text={language === "en" ? "Portfolio" : "Portfolio"} setScrollToPage={setScrollToPage} />
+        <NavLink id={4} text={language === "en" ? "Contact" : "Contact"} setScrollToPage={setScrollToPage} />
         <IconButton
           p={4}
           aria-label={colorMode === "dark" ? "Light mode" : "Dark mode"}
@@ -174,6 +182,23 @@ const Header = ({
               </svg>
             )}
           </Box>
+        </IconButton>
+        <IconButton
+          aria-label="Change language"
+          onClick={() => {
+            language === "en" ? setLanguage("fr") : setLanguage("en");
+          }}
+          bg="none"
+          transition="0.2s all ease-out"
+          _hover={{ transform: "scale(1.1)", cursor: "pointer" }}
+          _active={{ transform: "scale(1.2)" }}
+        >
+          <Image
+            src={`static/icons/nav/nav_${language === "en" ? "fr" : "en"}.svg`}
+            alt={language === "en" ? "English" : "Français"}
+            w="24px"
+            h="24px"
+          />
         </IconButton>
       </List>
     </Flex>

@@ -13,9 +13,11 @@ import SectionHeading from "../components/UI/SectionHeading";
 const AboutMeSection = ({
   colorMode,
   setScrollToPage,
+  language,
 }: {
   colorMode: "light" | "dark";
   setScrollToPage: (pageNum: number) => void;
+  language: string;
 }) => {
   const [ref, inView] = useInView();
 
@@ -38,29 +40,55 @@ const AboutMeSection = ({
         textAlign={{ base: "center", md: "left" }}
       >
         <Box color={colorMode === "dark" ? "white" : "black"}>
-          <SectionHeading text="Hello, World !" />
+          <SectionHeading text={language === "en" ? "Hello, World !" : "Qui suis-je ?"} />
           <Box>
-            <Box
-              as="p"
-              w={{ base: "95%", lg: "90%", xl: "80%" }}
-              lineHeight={{ base: "100%", md: "160%", lg: "180%" }}
-            >
-              My name is Marc Meynet. I&apos;m a 23 years old web developer from
-              Switzerland. <br />
-              <br />I love designing and creating web and mobile applications.
-              <br />
-              <br />
-              Technology has always been my biggest passion. IT evolves very
-              quickly and that&apos;s what motivates me to stay updated with the
-              latest tech.
-              <br />
-              <br />
-              For every project, my goal is to build a unique but intuitive
-              design.
-              <br />
-              <br />
-              Shall we get started ?
-            </Box>
+            {language === "en" ? (
+              <Box
+                as="p"
+                w={{ base: "95%", lg: "90%", xl: "80%" }}
+                lineHeight={{ base: "100%", md: "160%", lg: "180%" }}
+              >
+                My name is Marc Meynet. I&apos;m a 23 years old web developer
+                from Switzerland. <br />
+                <br />I love designing and creating web and mobile applications.
+                <br />
+                <br />
+                Technology has always been my biggest passion. IT evolves very
+                quickly and that&apos;s what motivates me to stay updated with
+                the latest tech.
+                <br />
+                <br />
+                For every project, my goal is to build a unique but intuitive
+                design.
+                <br />
+                <br />
+                Shall we get started ?
+              </Box>
+            ) : (
+              <Box
+                as="p"
+                w={{ base: "95%", lg: "90%", xl: "80%" }}
+                lineHeight={{ base: "100%", md: "160%", lg: "180%" }}
+              >
+                Je m&apos;appelle Marc Meynet. Je suis un développeur web suisse
+                de 23 ans.
+                <br />
+                <br />
+                I love designing and creating web and mobile applications.
+                <br />
+                <br />
+                La technologie a toujours été ma plus grande passion.
+                L&apos;informatique évolue très rapidement et c&apos;est ce qui
+                me motive à rester à jour avec les dernières technologies.
+                <br />
+                <br />
+                Pour chaque projet, mon objectif est de construire un design
+                unique mais intuitif.
+                <br />
+                <br />
+                Allons-nous commencer?
+              </Box>
+            )}
           </Box>
         </Box>
 
@@ -79,8 +107,12 @@ const AboutMeSection = ({
             flexDir="column"
             gap={2}
             pr={{ base: 6, sm: 4, md: 2 }}
-            transform={{ base: "scale(1.5)", sm: "scale(1.25)", md: "scale(1)" }}
-            mb={{base: "72px", sm: "36px", md: 0}}
+            transform={{
+              base: "scale(1.5)",
+              sm: "scale(1.25)",
+              md: "scale(1)",
+            }}
+            mb={{ base: "72px", sm: "36px", md: 0 }}
           >
             <ChakraLink as={Link} href="https://github.com/watsum08" isExternal>
               <Image

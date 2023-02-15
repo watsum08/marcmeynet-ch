@@ -18,6 +18,8 @@ export default function Home() {
 
   const [blockScroll, setBlockScroll] = useState(false);
 
+  const [language, setLanguage] = useState<"en" | "fr">("en");
+
   return (
     <>
       <Head>
@@ -45,23 +47,28 @@ export default function Home() {
             colorMode={colorMode}
             setColorMode={setColorMode}
             setBlockScroll={setBlockScroll}
+            setLanguage={setLanguage}
+            language={language}
           />
 
           <AboutMeSection
             colorMode={colorMode}
             setScrollToPage={handlePageChange}
+            language={language}
           />
 
-          <ToolsSection colorMode={colorMode} />
+          <ToolsSection colorMode={colorMode} language={language} />
 
           <PortfolioSection
             colorMode={colorMode}
             setBlockScroll={setBlockScroll}
+            language={language}
           />
 
           <ContactSection
             colorMode={colorMode}
             setScrollToPage={handlePageChange}
+            language={language}
           />
         </ReactPageScroller>
       </main>
