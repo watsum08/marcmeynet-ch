@@ -81,7 +81,7 @@ const PortfolioSection = ({
                 ]}
                 codeHref="https://github.com/watsum08/ameliasbnb-ch"
                 demoHref="https://www.ameliasbnb.ch"
-                imgHref="img/portfolio/ameliasbnb.jpeg"
+                imgHref="static/img/portfolio/ameliasbnb.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
               />
             </SwiperSlide>
@@ -97,7 +97,7 @@ const PortfolioSection = ({
                 ]}
                 codeHref="https://github.com/watsum08/marcmeynet-ch"
                 demoHref="https://www.marcmeynet.ch"
-                imgHref="img/portfolio/marcmeynet_v1.jpeg"
+                imgHref="static/img/portfolio/marcmeynet_v1.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
               />
             </SwiperSlide>
@@ -113,7 +113,7 @@ const PortfolioSection = ({
                 ]}
                 codeHref="https://github.com/watsum08/demolplus-ch"
                 demoHref="https://demolplus.ch"
-                imgHref="img/portfolio/demolplus.jpeg"
+                imgHref="static/img/portfolio/demolplus.jpeg"
                 httpAlert
                 color={colorMode === "dark" ? "black" : "white"}
               />
@@ -130,7 +130,7 @@ const PortfolioSection = ({
                 ]}
                 codeHref="https://github.com/watsum08/the-burger-place"
                 demoHref="https://www.the-burger-place.web.app/"
-                imgHref="img/portfolio/theburgerplace.jpeg"
+                imgHref="static/img/portfolio/theburgerplace.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
               />
             </SwiperSlide>
@@ -146,7 +146,7 @@ const PortfolioSection = ({
                 ]}
                 codeHref="https://github.com/watsum08/ameliasbnb-ch"
                 demoHref="https://ameliasbnb.ch"
-                imgHref="img/portfolio/ameliasbnb.jpeg"
+                imgHref="static/img/portfolio/ameliasbnb.jpeg"
                 inProgress
                 color={colorMode === "dark" ? "black" : "white"}
               />
@@ -163,7 +163,7 @@ const PortfolioSection = ({
                 ]}
                 codeHref="https://github.com/watsum08/ameliasbnb-ch"
                 demoHref="https://swissalgobots.vercel.app"
-                imgHref="img/portfolio/swissalgobots.jpeg"
+                imgHref="static/img/portfolio/swissalgobots.jpeg"
                 inProgress
                 isPrivate
                 color={colorMode === "dark" ? "black" : "white"}

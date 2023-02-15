@@ -118,7 +118,7 @@ const ContactSection = ({
           >
             <Avatar
               name="Marc Meynet"
-              src="img/contact/avatar.png"
+              src="static/img/contact/avatar.png"
               size={{ base: "xl", xl: "2xl" }}
               mx={{ base: "auto", md: 0 }}
             />

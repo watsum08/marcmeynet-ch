@@ -85,7 +85,7 @@ const AboutMeSection = ({
             <ChakraLink as={Link} href="https://github.com/watsum08" isExternal>
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
-                src="icons/aboutme/github.svg"
+                src="static/icons/aboutme/github.svg"
                 opacity={0.8}
                 alt="Github"
                 w="54px"
@@ -102,7 +102,7 @@ const AboutMeSection = ({
             >
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
-                src="icons/aboutme/stackoverflow.svg"
+                src="static/icons/aboutme/stackoverflow.svg"
                 opacity={0.8}
                 alt="Stack Overflow"
                 w="54px"
@@ -115,7 +115,7 @@ const AboutMeSection = ({
             <ChakraLink as={Link} href="#" isExternal>
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
-                src="icons/aboutme/linkedin.svg"
+                src="static/icons/aboutme/linkedin.svg"
                 opacity={0.8}
                 alt="Linked In"
                 w="54px"
@@ -139,7 +139,7 @@ const AboutMeSection = ({
             >
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
-                src="icons/aboutme/mail.svg"
+                src="static/icons/aboutme/mail.svg"
                 alt="Message"
                 w="54px"
                 rounded="2px"
@@ -149,7 +149,7 @@ const AboutMeSection = ({
             <ChakraLink as={Link} href="MarcAnthonyMeynet_CV.pdf" isExternal>
               <Image
                 filter={colorMode === "dark" ? "invert(0)" : "invert(1)"}
-                src="icons/aboutme/download.svg"
+                src="static/icons/aboutme/download.svg"
                 opacity={0.8}
                 alt="Download CV"
                 w="54px"
@@ -162,7 +162,7 @@ const AboutMeSection = ({
           </Flex>
 
           <Box w="450px" mt={{ base: -44, sm: -32, md: 0 }}>
-            <Image src="img/aboutme.png" alt="Photo of me" w="full" />
+            <Image src="static/img/aboutme.png" alt="Photo of me" w="full" />
           </Box>
         </Flex>
       </Flex>

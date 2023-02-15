@@ -66,25 +66,25 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
               {activeBox === 0 ? (
                 <ToolBox heading="Design" inView={inView}>
                   <ToolItem
-                    iconSrc="icons/skills/gimp.png"
+                    iconSrc="static/icons/skills/gimp.png"
                     text="GIMP"
                     href="https://www.gimp.org/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/figma.png"
+                    iconSrc="static/icons/skills/figma.png"
                     text="Figma"
                     href="https://www.figma.com/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/magicavoxel.png"
+                    iconSrc="static/icons/skills/magicavoxel.png"
                     text="MagicaVoxel"
                     href="https://ephtracy.github.io/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/spline.png"
+                    iconSrc="static/icons/skills/spline.png"
                     text="Spline"
                     href="https://spline.design/"
                     color={colorMode === "dark" ? "white" : "black"}
@@ -93,37 +93,37 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
               ) : activeBox === 1 ? (
                 <ToolBox heading="Languages" inView={inView}>
                   <ToolItem
-                    iconSrc="icons/skills/html5.png"
+                    iconSrc="static/icons/skills/html5.png"
                     text="HTML"
                     href="https://html5.org/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/css3.png"
+                    iconSrc="static/icons/skills/css3.png"
                     text="CSS"
                     href="https://www.w3.org/Style/CSS/Overview.en.html"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/javascript.png"
+                    iconSrc="static/icons/skills/javascript.png"
                     text="JavaScript"
                     href="https://www.javascript.com/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/typescript.png"
+                    iconSrc="static/icons/skills/typescript.png"
                     text="TypeScript"
                     href="https://www.typescriptlang.org/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/csharp.png"
+                    iconSrc="static/icons/skills/csharp.png"
                     text="C#"
                     href="https://learn.microsoft.com/en-us/dotnet/csharp/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/mysql.png"
+                    iconSrc="static/icons/skills/mysql.png"
                     text="MySQL"
                     href="https://www.mysql.com/"
                     color={colorMode === "dark" ? "white" : "black"}
@@ -132,31 +132,31 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
               ) : (
                 <ToolBox heading="Frameworks" inView={inView}>
                   <ToolItem
-                    iconSrc="icons/skills/react.png"
+                    iconSrc="static/icons/skills/react.png"
                     text="React"
                     href="https://reactjs.org/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/nextjs.png"
+                    iconSrc="static/icons/skills/nextjs.png"
                     text="Next.js"
                     href="https://nextjs.org/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/laravel.png"
+                    iconSrc="static/icons/skills/laravel.png"
                     text="Laravel"
                     href="https://laravel.com/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/svelte.png"
+                    iconSrc="static/icons/skills/svelte.png"
                     text="Svelte"
                     href="https://svelte.dev/"
                     color={colorMode === "dark" ? "white" : "black"}
                   />
                   <ToolItem
-                    iconSrc="icons/skills/unity.png"
+                    iconSrc="static/icons/skills/unity.png"
                     text="Unity"
                     href="https://unity.com/"
                     color={colorMode === "dark" ? "white" : "black"}
@@ -172,25 +172,25 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
             >
               <ToolBox heading="Design" inView={inView}>
                 <ToolItem
-                  iconSrc="icons/skills/gimp.png"
+                  iconSrc="static/icons/skills/gimp.png"
                   text="GIMP"
                   href="https://www.gimp.org/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/figma.png"
+                  iconSrc="static/icons/skills/figma.png"
                   text="Figma"
                   href="https://www.figma.com/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/magicavoxel.png"
+                  iconSrc="static/icons/skills/magicavoxel.png"
                   text="MagicaVoxel"
                   href="https://ephtracy.github.io/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/spline.png"
+                  iconSrc="static/icons/skills/spline.png"
                   text="Spline"
                   href="https://spline.design/"
                   color={colorMode === "dark" ? "white" : "black"}
@@ -199,37 +199,37 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
 
               <ToolBox heading="Languages" inView={inView}>
                 <ToolItem
-                  iconSrc="icons/skills/html5.png"
+                  iconSrc="static/icons/skills/html5.png"
                   text="HTML"
                   href="https://html5.org/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/css3.png"
+                  iconSrc="static/icons/skills/css3.png"
                   text="CSS"
                   href="https://www.w3.org/Style/CSS/Overview.en.html"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/javascript.png"
+                  iconSrc="static/icons/skills/javascript.png"
                   text="JavaScript"
                   href="https://www.javascript.com/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/typescript.png"
+                  iconSrc="static/icons/skills/typescript.png"
                   text="TypeScript"
                   href="https://www.typescriptlang.org/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/csharp.png"
+                  iconSrc="static/icons/skills/csharp.png"
                   text="C#"
                   href="https://learn.microsoft.com/en-us/dotnet/csharp/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/mysql.png"
+                  iconSrc="static/icons/skills/mysql.png"
                   text="MySQL"
                   href="https://www.mysql.com/"
                   color={colorMode === "dark" ? "white" : "black"}
@@ -238,31 +238,31 @@ const ToolsSection = ({ colorMode }: { colorMode: "light" | "dark" }) => {
 
               <ToolBox heading="Frameworks" inView={inView}>
                 <ToolItem
-                  iconSrc="icons/skills/react.png"
+                  iconSrc="static/icons/skills/react.png"
                   text="React"
                   href="https://reactjs.org/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/nextjs.png"
+                  iconSrc="static/icons/skills/nextjs.png"
                   text="Next.js"
                   href="https://nextjs.org/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/laravel.png"
+                  iconSrc="static/icons/skills/laravel.png"
                   text="Laravel"
                   href="https://laravel.com/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/svelte.png"
+                  iconSrc="static/icons/skills/svelte.png"
                   text="Svelte"
                   href="https://svelte.dev/"
                   color={colorMode === "dark" ? "white" : "black"}
                 />
                 <ToolItem
-                  iconSrc="icons/skills/unity.png"
+                  iconSrc="static/icons/skills/unity.png"
                   text="Unity"
                   href="https://unity.com/"
                   color={colorMode === "dark" ? "white" : "black"}
