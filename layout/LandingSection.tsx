@@ -3,7 +3,7 @@ import Section from "../components/UI/Section";
 import Spline from "@splinetool/react-spline";
 import Typewriter from "typewriter-effect";
 import Header from "../components/Header";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const LandingSection = ({
@@ -97,31 +97,20 @@ const LandingSection = ({
                 fontWeight={300}
                 lineHeight={{ base: "24px", md: "32px" }}
               >
-                {language === "en" ? (
-                  <Typewriter
-                    onInit={(typewriter) => {
-                      typewriter
-                        .changeDelay(40)
-                        .typeString("Bringing ideas to reality")
-                        .pauseFor(500)
-                        .typeString(", with code")
-                        .pauseFor(Infinity)
-                        .start();
-                    }}
-                  />
-                ) : (
-                  <Typewriter
-                    onInit={(typewriter) => {
-                      typewriter
-                        .changeDelay(40)
-                        .typeString("Transformer des idées en réalité")
-                        .pauseFor(500)
-                        .typeString(", avec du code")
-                        .pauseFor(Infinity)
-                        .start();
-                    }}
-                  />
-                )}
+                <Typewriter
+                  options={{
+                    strings: [
+                      `${
+                        language === "en"
+                          ? "Bringing ideas to reality, with code"
+                          : "Transformez des idées en réalité, avec du code"
+                      }`,
+                    ],
+                    autoStart: true,
+                    deleteSpeed: Infinity,
+                    delay: 50,
+                  }}
+                />
               </Heading>
             </Flex>
           </Box>
