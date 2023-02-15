@@ -79,9 +79,9 @@ const PortfolioSection = ({
                   "Custom design",
                   "Created with Next.js in TypeScript",
                 ]}
-                codeHref="https://github.com/watsum08/ameliasbnb-ch"
-                demoHref="https://www.ameliasbnb.ch"
-                imgHref="static/img/portfolio/ameliasbnb.jpeg"
+                codeHref="https://github.com/watsum08/marcmeynet-ch"
+                demoHref="https://www.marcmeynet.ch"
+                imgHref="static/img/portfolio/marcmeynet.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
               />
             </SwiperSlide>
@@ -95,8 +95,8 @@ const PortfolioSection = ({
                   "Custom design",
                   "I had a lot of fun using JavaScript",
                 ]}
-                codeHref="https://github.com/watsum08/marcmeynet-ch"
-                demoHref="https://www.marcmeynet.ch"
+                codeHref="https://github.com/watsum08/marcmeynet-ch/tree/v1-prod"
+                demoHref="https://marc-meynet-v1.web.app"
                 imgHref="static/img/portfolio/marcmeynet_v1.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
               />
