@@ -6,7 +6,7 @@ import PortfolioSection from "../layout/PortfolioSection";
 import ContactSection from "../layout/ContactSection";
 import ReactPageScroller from "react-page-scroller";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState<number | undefined>(0);
@@ -17,6 +17,17 @@ export default function Home() {
   };
 
   const [blockScroll, setBlockScroll] = useState(false);
+
+  useEffect(() => {
+    let browserLang = window.navigator.language;
+    console.log(browserLang);
+
+    if (browserLang.includes("fr" || "FR")) {
+      setLanguage("fr");
+    } else {
+      setLanguage("en");
+    }
+  },[]);
 
   const [language, setLanguage] = useState<"en" | "fr">("en");
 

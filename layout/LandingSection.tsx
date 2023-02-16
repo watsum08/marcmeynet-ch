@@ -97,20 +97,24 @@ const LandingSection = ({
                 fontWeight={300}
                 lineHeight={{ base: "24px", md: "32px" }}
               >
-                <Typewriter
-                  options={{
-                    strings: [
-                      `${
-                        language === "en"
-                          ? "Bringing ideas to reality, with code"
-                          : "Transformez des idées en réalité, avec du code"
-                      }`,
-                    ],
-                    autoStart: true,
-                    deleteSpeed: Infinity,
-                    delay: 50,
-                  }}
-                />
+                {splineLoaded ? (
+                  <Typewriter
+                    options={{
+                      strings: [
+                        `${
+                          language === "en"
+                            ? "Bringing ideas to reality, with code"
+                            : "Transformez des idées en réalité, avec du code"
+                        }`,
+                      ],
+                      autoStart: true,
+                      deleteSpeed: Infinity,
+                      delay: 50,
+                    }}
+                  />
+                ) : (
+                  ""
+                )}
               </Heading>
             </Flex>
           </Box>

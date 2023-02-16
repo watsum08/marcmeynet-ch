@@ -94,7 +94,7 @@ const PortfolioSection = ({
                       ]
                 }
                 codeHref="https://github.com/watsum08/marcmeynet-ch"
-                demoHref="https://www.marcmeynet.ch"
+                demoHref="https://marcmeynet.ch"
                 imgHref="static/img/portfolio/marcmeynet.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
                 language={language}
@@ -170,7 +170,7 @@ const PortfolioSection = ({
                       ]
                 }
                 codeHref="https://github.com/watsum08/the-burger-place"
-                demoHref="https://www.the-burger-place.web.app/"
+                demoHref="https://the-burger-place.web.app/"
                 imgHref="static/img/portfolio/theburgerplace.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
                 language={language}
