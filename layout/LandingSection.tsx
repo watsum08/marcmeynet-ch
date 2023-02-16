@@ -80,8 +80,8 @@ const LandingSection = ({
             pos="relative"
             pb={{ base: 0, lg: "160px" }}
             color={colorMode === "dark" ? "white" : "black"}
-            whiteSpace="nowrap"
             mx="auto"
+            px={8}
           >
             <Heading
               as="h1"
