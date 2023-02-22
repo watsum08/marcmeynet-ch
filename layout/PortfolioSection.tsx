@@ -220,7 +220,7 @@ const PortfolioSection = ({
                         "Créé dans Next.js avec TypeScript",
                       ]
                 }
-                codeHref="https://github.com/watsum08/ameliasbnb-ch"
+                codeHref="https://github.com/watsum08/swissalgobots"
                 demoHref="https://swissalgobots.vercel.app"
                 imgHref="static/img/portfolio/swissalgobots.jpeg"
                 inProgress
