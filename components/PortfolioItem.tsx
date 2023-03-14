@@ -49,6 +49,7 @@ const PortfolioItem = ({
       pos="relative"
       m="auto"
       textAlign={{ base: "center", lg: "left" }}
+      userSelect="none"
     >
       <Box
         bg={color === "black" ? "black" : "white"}

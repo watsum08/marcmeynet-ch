@@ -52,7 +52,18 @@ const PortfolioSection = ({
             : "Faites glisser ou utilisez la molette pour voir tous mes projets"}
         </Text>
 
-        <Flex w="100vw" pos="absolute" left={0} mt={{ base: 8, lg: 16 }}>
+        <Flex
+          w="100vw"
+          pos="absolute"
+          left={0}
+          mt={{ base: 8, lg: 16 }}
+          _hover={{ transform: "scale(1.1)" }}
+          transition="0.3s transform"
+          onMouseOver={() => setBlockScroll(true)}
+          onMouseOut={() => setBlockScroll(false)}
+          onTouchStart={() => setBlockScroll(true)}
+          onTouchEnd={() => setBlockScroll(false)}
+        >
           <Swiper
             modules={[Scrollbar, A11y, Autoplay, Mousewheel]}
             autoplay={{
@@ -73,12 +84,10 @@ const PortfolioSection = ({
             centeredSlides
             loop
             loopedSlides={2}
-            onTouchStart={() => setBlockScroll(true)}
-            onTouchEnd={() => setBlockScroll(false)}
           >
             <SwiperSlide>
               <PortfolioItem
-                name="My portfolio website"
+                name="Marc Meynet"
                 tags={["NextJS", "TypeScript", "Spline"]}
                 description={
                   language === "en"
@@ -103,24 +112,49 @@ const PortfolioSection = ({
 
             <SwiperSlide>
               <PortfolioItem
-                name="My portfolio website v.1"
+                name="Marc Meynet v.1"
                 tags={["HTML", "CSS", "JavaScript"]}
                 description={
                   language === "en"
                     ? [
                         "My first portfolio website",
                         "Custom design",
-                        "I had a lot of fun using JavaScript",
+                        "I had fun with JavaScript",
                       ]
                     : [
                         "Mon premier site de portfolio",
                         "Design personalisé",
-                        "J'ai eu beaucoup de plaisir à utiliser JavaScript",
+                        "Je me suis amusé avec JavaScript",
                       ]
                 }
                 codeHref="https://github.com/watsum08/marcmeynet-ch/tree/v1-prod"
                 demoHref="https://marc-meynet-v1.web.app"
                 imgHref="static/img/portfolio/marcmeynet_v1.jpeg"
+                color={colorMode === "dark" ? "black" : "white"}
+                language={language}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <PortfolioItem
+                name="The Burger Place"
+                tags={["HTML", "CSS", "JavaScript"]}
+                description={
+                  language === "en"
+                    ? [
+                        "A fictional burger place.",
+                        "An HTML/CSS school project",
+                        "Only web version available",
+                      ]
+                    : [
+                        "Un burger place fictif.",
+                        "Un projet d'école HTML/CSS",
+                        "Seule la version Web est disponible",
+                      ]
+                }
+                codeHref="https://github.com/watsum08/the-burger-place"
+                demoHref="https://the-burger-place.web.app/"
+                imgHref="static/img/portfolio/theburgerplace.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
                 language={language}
               />
@@ -147,31 +181,6 @@ const PortfolioSection = ({
                 demoHref="https://demolplus.ch"
                 imgHref="static/img/portfolio/demolplus.jpeg"
                 httpAlert
-                color={colorMode === "dark" ? "black" : "white"}
-                language={language}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <PortfolioItem
-                name="The Burger Place"
-                tags={["HTML", "CSS", "JavaScript"]}
-                description={
-                  language === "en"
-                    ? [
-                        "A fictional burger place.",
-                        "An HTML/CSS school project",
-                        "Only web version available",
-                      ]
-                    : [
-                        "Un burger place fictif.",
-                        "Un projet d'école HTML/CSS",
-                        "Seule la version Web est disponible",
-                      ]
-                }
-                codeHref="https://github.com/watsum08/the-burger-place"
-                demoHref="https://the-burger-place.web.app/"
-                imgHref="static/img/portfolio/theburgerplace.jpeg"
                 color={colorMode === "dark" ? "black" : "white"}
                 language={language}
               />
