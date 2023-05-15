@@ -60,13 +60,13 @@ const Header = ({
         p={4}
         py={{ base: 4, md: 6 }}
         m={0}
+        aria-label="Menu"
         onClick={() => setIsOpen(!isOpen)}
         _hover={{ transform: `rotate(${isOpen ? 90 : 0}deg) scale(1.2)` }}
       >
         <Box
           w={{ base: "24px", sm: "28px", md: "32px" }}
           h="auto"
-          aria-label="Menu"
           transition="0.2s all ease-out"
           cursor="pointer"
         >
@@ -125,9 +125,21 @@ const Header = ({
           text={language === "en" ? "About me" : "Qui suis-je"}
           setScrollToPage={setScrollToPage}
         />
-        <NavLink id={2} text={language === "en" ? "Tools" : "Outils"} setScrollToPage={setScrollToPage} />
-        <NavLink id={3} text={language === "en" ? "Portfolio" : "Portfolio"} setScrollToPage={setScrollToPage} />
-        <NavLink id={4} text={language === "en" ? "Contact" : "Contact"} setScrollToPage={setScrollToPage} />
+        <NavLink
+          id={2}
+          text={language === "en" ? "Tools" : "Outils"}
+          setScrollToPage={setScrollToPage}
+        />
+        <NavLink
+          id={3}
+          text={language === "en" ? "Portfolio" : "Portfolio"}
+          setScrollToPage={setScrollToPage}
+        />
+        <NavLink
+          id={4}
+          text={language === "en" ? "Contact" : "Contact"}
+          setScrollToPage={setScrollToPage}
+        />
         <IconButton
           p={4}
           aria-label={colorMode === "dark" ? "Light mode" : "Dark mode"}

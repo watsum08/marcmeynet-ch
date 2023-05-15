@@ -7,8 +7,11 @@ import ContactSection from "../layout/ContactSection";
 import ReactPageScroller from "react-page-scroller";
 
 import { useEffect, useState } from "react";
+import CanonicalURL from "../components/CanonicalURL";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  console.log("");
   const [currentPage, setCurrentPage] = useState<number | undefined>(0);
   const [colorMode, setColorMode] = useState<"light" | "dark">("dark");
 
@@ -20,24 +23,30 @@ export default function Home() {
 
   useEffect(() => {
     let browserLang = window.navigator.language;
-    console.log(browserLang);
 
     if (browserLang.includes("fr" || "FR")) {
       setLanguage("fr");
     } else {
       setLanguage("en");
     }
-  },[]);
+  }, []);
 
   const [language, setLanguage] = useState<"en" | "fr">("en");
 
+  const siteUrl = "https://marcmeynet.ch";
+  const router = useRouter();
+
+  const cleanPath = router.asPath.split("#")[0].split("?")[0];
+  const canonicalUrl = `${siteUrl}` + (router.asPath === "/" ? "" : cleanPath);
+
   return (
-    <>
+    <html lang="en-US">
       <Head>
         <title>Marc Meynet</title>
         <meta name="description" content="Marc Meynet's portfolio website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.png" />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
         <ReactPageScroller
@@ -83,6 +92,6 @@ export default function Home() {
           />
         </ReactPageScroller>
       </main>
-    </>
+    </html>
   );
 }
