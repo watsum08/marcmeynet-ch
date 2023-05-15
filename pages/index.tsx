@@ -19,25 +19,20 @@ export default function Home() {
 
   const [blockScroll, setBlockScroll] = useState(false);
 
+  const router = useRouter();
+
   useEffect(() => {
     console.log("----------------");
     console.log("Developed with ❤️");
     console.log("By Marc Meynet 🤓");
     console.log("----------------");
+  }, [router]);
 
-    let browserLang = window.navigator.language;
-
-    if (browserLang.includes("fr" || "FR")) {
-      setLanguage("fr");
-    } else {
-      setLanguage("en");
-    }
-  }, []);
-
-  const [language, setLanguage] = useState<"en" | "fr">("en");
+  const [language, setLanguage] = useState<"en" | "fr">(
+    router.locale === "fr" ? "fr" : "en"
+  );
 
   const siteUrl = "https://marcmeynet.ch";
-  const router = useRouter();
 
   const cleanPath = router.asPath.split("#")[0].split("?")[0];
   const canonicalUrl = `${siteUrl}` + (router.asPath === "/" ? "" : cleanPath);
