@@ -7,11 +7,9 @@ import ContactSection from "../layout/ContactSection";
 import ReactPageScroller from "react-page-scroller";
 
 import { useEffect, useState } from "react";
-import CanonicalURL from "../components/CanonicalURL";
 import { useRouter } from "next/router";
 
 export default function Home() {
-  console.log("");
   const [currentPage, setCurrentPage] = useState<number | undefined>(0);
   const [colorMode, setColorMode] = useState<"light" | "dark">("dark");
 
@@ -22,6 +20,11 @@ export default function Home() {
   const [blockScroll, setBlockScroll] = useState(false);
 
   useEffect(() => {
+    console.log("----------------");
+    console.log("Developed with ❤️");
+    console.log("By Marc Meynet 🤓");
+    console.log("----------------");
+
     let browserLang = window.navigator.language;
 
     if (browserLang.includes("fr" || "FR")) {
@@ -40,7 +43,7 @@ export default function Home() {
   const canonicalUrl = `${siteUrl}` + (router.asPath === "/" ? "" : cleanPath);
 
   return (
-    <html lang="en-US">
+    <>
       <Head>
         <title>Marc Meynet</title>
         <meta name="description" content="Marc Meynet's portfolio website" />
@@ -92,6 +95,6 @@ export default function Home() {
           />
         </ReactPageScroller>
       </main>
-    </html>
+    </>
   );
 }
